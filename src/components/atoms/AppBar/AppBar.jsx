@@ -16,7 +16,8 @@ const style = {
   },
   appBarLogo: {
     whiteSpace: 'nowrap',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    cursor: 'pointer'
   }
 }
 
@@ -71,10 +72,12 @@ export const AppBar = (props) => {
       <AppBarWrapper>
         <Box
           sx={{
-            flex: '1 2',
-            ...style.appBarLogo
+            flex: '1 2'
           }}
         >
+          <Typography variant="h6" style={style.appBarLogo} onClick={() => handleBoxClick('/')}>
+            Real estate
+          </Typography>
           {/* Hamburger menu */}
           <Hidden smUp>
             <Grid item xs={2} sm={1}>
@@ -83,8 +86,8 @@ export const AppBar = (props) => {
               </IconButton>
             </Grid>
           </Hidden>
-          <Typography> Real estate</Typography>
         </Box>
+
         {/* Menu items */}
         <Hidden smDown>
           <Grid container spacing={2} sx={{ flex: '1' }}>
