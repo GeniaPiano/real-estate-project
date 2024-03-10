@@ -1,8 +1,8 @@
-import { Routes, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
-import { MainPage } from './pages/MainPage/MainPage'
+import { Routes, Route } from 'react-router-dom'
+import { HomePage } from './pages/HomePage/HomePage'
 import { MainLayout } from './layouts/MainLayout/MainLayout'
-import { LoginPage } from './pages/LoginPage/LoginPage'
-import { RegisterPage } from './pages/RegisterPage/RegisterPage'
+import { AccountPage } from './pages/AccountPage/AccountPage'
+import { PostAddPage } from './pages/PostAddPage/PostAddPage'
 import { ErrorsPage } from './pages/ErrorsPage/ErrorsPage'
 import './App.css'
 
@@ -10,9 +10,9 @@ export const App = () => {
   return (
     <MainLayout>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/post-ad" element={<PostAddPage />} />
         <Route exact path="*" element={<ErrorsPage />} />
       </Routes>
     </MainLayout>
