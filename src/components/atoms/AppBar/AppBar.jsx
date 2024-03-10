@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useState } from 'react'
-import { Box, Grid, Stack, Drawer, IconButton, Hidden } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Box, Grid, Stack, Drawer, IconButton, Hidden, Typography } from '@mui/material'
+import { Link, useNavigate } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import PostAddIcon from '@mui/icons-material/PostAdd'
 import HomeIcon from '@mui/icons-material/Home'
@@ -10,9 +10,9 @@ import CloseIcon from '@mui/icons-material/Close'
 
 const style = {
   link: {
-    textDecoration: 'none',
     color: 'inherit',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    textDecoration: 'none'
   },
   appBarLogo: {
     whiteSpace: 'nowrap',
@@ -36,15 +36,16 @@ const pathsData = [
 
 const AppBarWrapper = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
-  height: 100,
+  height: 65,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '5px 20px',
   width: '100%',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
-    alignContent: 'flex-start'
+    alignContent: 'flex-start',
+    justifyContent: 'flex-start',
+    marginBottom: '10px'
   },
   [theme.breakpoints.down('md')]: {
     flexDirection: 'row',
@@ -52,11 +53,17 @@ const AppBarWrapper = styled(Box)(({ theme }) => ({
   }
 }))
 
-export const AppBar = () => {
+export const AppBar = (props) => {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const navigate = useNavigate()
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen)
+  }
+
+  const handleBoxClick = (path) => {
+    if (drawerOpen) setDrawerOpen(false)
+    navigate(path)
   }
 
   return (
@@ -76,7 +83,7 @@ export const AppBar = () => {
               </IconButton>
             </Grid>
           </Hidden>
-          Real estate
+          <Typography> Real estate</Typography>
         </Box>
         {/* Menu items */}
         <Hidden smDown>
@@ -98,15 +105,15 @@ export const AppBar = () => {
       </AppBarWrapper>
 
       {/* Drawer for smaller screens */}
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer} width="250px">
         <Stack spacing={2} p={2}>
           {pathsData.map((el) => (
-            <Link key={el.name} to={el.path} style={style.link} onClick={() => toggleDrawer}>
+            <Box key={el.name} to={el.path} style={style.link} onClick={() => handleBoxClick(el.path)}>
               <Stack direction="row" spacing={1}>
                 {el.icon}
                 <Box>{el.name}</Box>
               </Stack>
-            </Link>
+            </Box>
           ))}
         </Stack>
       </Drawer>

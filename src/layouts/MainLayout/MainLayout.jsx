@@ -3,9 +3,9 @@ import { AppBar } from '../../components/atoms/AppBar/AppBar'
 
 export const MainLayout = ({ children }) => {
   return (
-    <Box>
+    <Box sx={{ padding: '5px 20px' }}>
       <AppBar />
-      {children}
+      <Box>{children}</Box>
     </Box>
   )
 }
