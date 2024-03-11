@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { AppBar } from '../../components/atoms/AppBar/AppBar'
+import { AppBar } from '../../components/molecules/AppBar/AppBar'
 
 export const MainLayout = ({ children }) => {
   return (

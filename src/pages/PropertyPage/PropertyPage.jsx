@@ -1,7 +1,9 @@
+import { TitlePage } from "../../components/atoms/TitlePage/TitlePage"
+
 export const PropertyPage = () => {
   return (
     <>
-      <div>Property Page</div>
+      <TitlePage title="Property Details"/>
     </>
   )
 }

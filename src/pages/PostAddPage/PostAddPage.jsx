@@ -1,3 +1,9 @@
+import { TitlePage } from "../../components/atoms/TitlePage/TitlePage"
+
 export const PostAddPage = () => {
-  return <div>Post add Page</div>
+  return (
+    <>
+      <TitlePage title="Post an advertisment"/>
+    </>
+  )
 }

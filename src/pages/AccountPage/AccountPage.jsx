@@ -1,3 +1,9 @@
+import { TitlePage } from "../../components/atoms/TitlePage/TitlePage"
+
 export const AccountPage = () => {
-  return <div>Account page</div>
+  return (
+    <>
+      <TitlePage title="Your account"/>
+    </>
+  )
 }
