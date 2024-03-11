@@ -6,4 +6,5 @@ module.exports = {
   tabWidth: 2,
   useTabs: false,
   eslintIntegration: true,
-};
+  parser: "scss"
+}
