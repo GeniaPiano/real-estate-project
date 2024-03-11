@@ -5,6 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import axios from 'axios'
 import { useTheme } from '@mui/material/styles'
 import { useImageWidth } from '../../../hooks/useImageWidth/useImageWidth'
+import { propertyStyle } from '../PropertiesList/propertyStyle'
 import './PropertiesList.css'
 
 export const PropertiesList = () => {
@@ -15,49 +16,7 @@ export const PropertiesList = () => {
     const propertiesFromApi = await axios.get('./../data/db.json')
     setProperties(propertiesFromApi.data.properties)
   }
-  
-  const style={
-    title: {
-      color: theme.palette.primary.main,
-      fontWeight: "bold",
-    },
-    city: {
-      color: theme.palette.secondary.grey,
-      marginTop: "10px"
-    },
-    price: {
-      color: theme.palette.primary.main,
-      marginTop: "10px"
-    },
-    button: {
-      borderRadius: "20px", 
-      textTransform: "none", 
-      paddingY: "1px",
-      paddingX: "10px",
-      marginBottom: "10px",
-    },
-    buttonWrapper: {
-      display: "flex",
-      justifyContent: "flex-end"
-    },
-    image: {
-      width: width, 
-      height: 150,
-      maxWidth: '100%'
-    },
-    imageIconsWrapper: {
-      padding: "10px 0",
-      display: "flex",
-      justifyContent: "space-between"  
-    },
-    imageWrapper: {
-      border: `1px solid ${theme.palette.divider}`,
-      borderRadius: "10px",
-      padding: "5px",
-      display: "flex",
-      maxWidth: 300
-    }
-  }
+  const style = propertyStyle(theme, width)
 
   useEffect(() => {
     getPropertiesData()
