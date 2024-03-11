@@ -4,7 +4,7 @@ import { MainLayout } from './layouts/MainLayout/MainLayout'
 import { AccountPage } from './pages/AccountPage/AccountPage'
 import { PostAddPage } from './pages/PostAddPage/PostAddPage'
 import { ErrorsPage } from './pages/ErrorsPage/ErrorsPage'
-import './App.css'
+import './assets/scss/App.scss'
 
 export const App = () => {
   return (
