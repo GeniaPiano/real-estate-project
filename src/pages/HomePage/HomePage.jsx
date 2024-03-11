@@ -36,6 +36,7 @@ export const HomePage = () => {
           size="small"
           className="changeInput"
           labelId="country-label"
+          value=''
         >
           {dataCountries &&
             dataCountries.map((el, index) => (
