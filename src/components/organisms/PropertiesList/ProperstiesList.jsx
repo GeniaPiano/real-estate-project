@@ -78,7 +78,7 @@ export const PropertiesList = () => {
                       variant="contained" 
                       sx={style.button}>
                       View more
-                    </Button>
+                  </Button>
                 </Box>  
               </CardContent>      
               </Card>
