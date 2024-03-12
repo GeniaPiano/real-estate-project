@@ -7,6 +7,7 @@ import PostAddIcon from '@mui/icons-material/PostAdd'
 import HomeIcon from '@mui/icons-material/Home'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import { CountriesDropdown } from '../../atoms/CountriesDropdown/CountriesDropdown'
 
 const style = {
   link: {
@@ -17,7 +18,8 @@ const style = {
   appBarLogo: {
     whiteSpace: 'nowrap',
     overflow: 'hidden',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    marginRight: '40px'
   }
 }
 
@@ -37,11 +39,13 @@ const pathsData = [
 
 const AppBarWrapper = styled(Box)(({ theme }) => ({
   maxHeight: '100%',
-  height: 65,
+  height: 80,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
+  borderBottom: '1px solid',
+  marginBottom: '10px',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignContent: 'flex-start',
@@ -54,7 +58,7 @@ const AppBarWrapper = styled(Box)(({ theme }) => ({
   }
 }))
 
-export const AppBar = (props) => {
+export const AppBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const navigate = useNavigate()
 
@@ -72,12 +76,15 @@ export const AppBar = (props) => {
       <AppBarWrapper>
         <Box
           sx={{
-            flex: '1 2'
+            flex: '1 2',
+            display: 'flex',
+            flexDirection: 'row'
           }}
         >
           <Typography variant="h6" style={style.appBarLogo} onClick={() => handleBoxClick('/')}>
             Real estate
           </Typography>
+          <CountriesDropdown/>
           {/* Hamburger menu */}
           <Hidden smUp>
             <Grid item xs={2} sm={1}>
