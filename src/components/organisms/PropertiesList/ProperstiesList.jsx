@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router'
-import { useState } from 'react'
-import { Stack, Button, IconButton, Box, Card, CardContent, CardMedia, CardActions, Typography, Grid } from '@mui/material'
+import { useState, useEffect } from 'react'
+import { Stack, Button, IconButton, Box, Card, CardContent, CardMedia, Typography, Grid } from '@mui/material'
 import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite' 
 import { useTheme } from '@mui/material/styles'
+import { SearchSortFilter } from '../../organisms/SearchSortFilter/SearchSortFilter'
+import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner'
 import { useImageWidth } from '../../../hooks/useImageWidth/useImageWidth'
 import { propertyStyle } from '../PropertiesList/propertyStyle'
-import { useProperties } from '../../../hooks/useProperties/useProperties'
+import { usePropertiesStore } from '../../../stores/usePropertiesStore'
 import { Pagination } from '../../molecules/Pagination/Pagination'
 import './PropertiesList.css'
 
@@ -15,20 +17,28 @@ export const PropertiesList = () => {
   const width = useImageWidth()
   const navigate = useNavigate()
   const style = propertyStyle(theme, width)
-  const properties = useProperties()
+  const { properties, fetchProperties, isLoading, filteredProperties, setFilter } = usePropertiesStore()
   const PER_PAGE = 8
   const [page, setPage] = useState(1)
   const startIndex = (page - 1) * PER_PAGE
-  const paginatedProperties = properties.slice(startIndex, startIndex + PER_PAGE)
-
+  const paginatedProperties = filteredProperties.slice(startIndex, startIndex + PER_PAGE)
   const handleNavigateToProperty = (id) => {
     navigate(`/property/${id}`)
   }
 
+  useEffect(() => {
+    fetchProperties()
+  }, [fetchProperties])
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
+
   return (
-    <>
+    <> 
+      <SearchSortFilter />
       <Pagination
-        total={properties.length}
+        total={filteredProperties.length}
         perPage={PER_PAGE}
         currentPage={page}
         onPageChange={setPage}  
