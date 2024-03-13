@@ -7,7 +7,7 @@ export const usePropertiesStore = create((set) => ({
   error: null,
   filters: {
     cities: [],
-    type: '',
+    types: '',
     priceRange: [0, Infinity],
   },
   filteredProperties: [],
@@ -27,7 +27,7 @@ export const usePropertiesStore = create((set) => ({
   set((state) => ({
     filters: {
       cities: [],
-      type: '',
+      types: [],
       priceRange: [0, Infinity]
     },
     filteredProperties: state.properties
@@ -39,7 +39,7 @@ export const usePropertiesStore = create((set) => ({
     const filteredProperties = state.properties.filter((property) => {
       return (
         (newFilters.cities.length === 0 || newFilters.cities.includes(property.city)) &&
-        (newFilters.type ? property.type === newFilters.type : true) &&
+        (newFilters.types.length=== 0 || newFilters.types.includes(property.type)) &&
         property.price >= newFilters.priceRange[0] &&
         property.price <= newFilters.priceRange[1]
       )
