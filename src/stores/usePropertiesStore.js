@@ -3,6 +3,7 @@ import { propertiesService } from '../services/PropertiesServices'
 
 export const usePropertiesStore = create((set) => ({
   properties: [],
+  currentProperty: null,
   isLoading: false,
   error: null,
   filters: {
@@ -18,9 +19,21 @@ export const usePropertiesStore = create((set) => ({
       // setTimeout to simulate fetching from API
       setTimeout(()=> {
         set({properties, filteredProperties: properties, isLoading: false})
-      }, 1000)
+      }, 800)
   } catch (error) {
     return set({isLoading: false, error: error.message})
+  }
+ },
+ fetchPropertyById: async (id) => {
+  set({ isLoading: true, error: null})
+  try {
+    const property = await propertiesService.fetchById(id)
+    setTimeout(()=> {
+      // setTimeout to simulate fetching from API  
+      set({currentProperty: property, isLoading: false})
+    }, 800)
+  } catch (error) {
+    set({ isLoading: false, error: error.message })
   }
  },
  resetFilters: () => {

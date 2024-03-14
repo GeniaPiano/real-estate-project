@@ -1,14 +1,18 @@
-import { Typography, Box, Grid } from '@mui/material'
+import { useEffect } from 'react'
+import { Typography, Box, Grid, ImageList, ImageListItem, CardMedia, Paper } from '@mui/material'
 import { useParams } from 'react-router'
 import { TitlePage } from '../../components/atoms/TitlePage/TitlePage'
-import { useProperty } from '../../hooks/useProperty/useProperty'
-import { useTheme } from '@mui/material/styles'
+// import { useProperty } from '../../hooks/useProperty/useProperty'
+import { usePropertiesStore } from '../../stores/usePropertiesStore'
+import { useTheme, alpha } from '@mui/material/styles'
+import { LoadingSpinner } from '../../components/atoms/LoadingSpinner/LoadingSpinner'
+import { NotFoundProperties } from '../../components/atoms/NotFoundProperties/NotFoundProperties'
 
 export const PropertyPage = () => {
 const {id} = useParams()
 const theme = useTheme()
-const property = useProperty(id)
-if (!property) return <p>Loading...</p>
+const { currentProperty, fetchPropertyById, isLoading, error } = usePropertiesStore()
+
 
 const style = {
   name: {
@@ -29,37 +33,74 @@ const style = {
    }
 }
 
-const propertyData = [
+const propertyData = []
+if (currentProperty) propertyData.push(
   {
     label: 'Title',
-    value: property.name,
+    value: currentProperty.name,
     style: style.name
   },
   {
     label: 'Price',
-    value: `${property.price} PLN`,
+    value: `${currentProperty.price} PLN`,
     style: style.price
   },
   {
     label: 'City',
-    value: property.city,
+    value: currentProperty.city,
     style: style.city
   },
   {
     label: 'Surface',
-    value: `${property.surface} m2`,
+    value: `${currentProperty.surface} m2`,
     style: style.surface
   },
   {
     label: 'Description',
-    value: property.description,
+    value: currentProperty.description,
     style: style.description
   }
-]
+) 
+
+  const renderMainImage = (image, title) => (
+    <CardMedia
+      component="img"
+      height="auto"
+      image={image}
+      alt={title}
+      sx={{ width: '90%', maxHeight:300, objectFit: 'cover' }}
+    />
+  )
+
+  const renderImageList = (images) => (
+    <ImageList sx={{ width: '100%'}} cols={3} rowHeight={164}>
+      {images.map((item, index) => (
+        <ImageListItem key={index}>
+          <img
+            src={item}
+            alt={`Property image ${index}`}
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+  )
+
+  useEffect(() => {
+    if (id) {
+      fetchPropertyById(id)
+    }
+  }, [id])
+
+    if (isLoading) return <LoadingSpinner/>
+    if (error) return <NotFoundProperties message="Something went wrong, try again later." />
+    if (!isLoading && !currentProperty) return <NotFoundProperties message="Property not found." />
 
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
       <TitlePage title="Property Details"/>
+
       <Grid 
           padding={1}  
           container 
@@ -67,24 +108,37 @@ const propertyData = [
           sx={{
             border: `${theme.palette.divider} 1px solid`, 
             width: '100%', 
-            margin: 0, 
+            margin: '10px 0',
+            backgroundColor: theme.palette.grey[100]
             }} 
           >
-          <Grid item xs={3}>
-            <Grid container spacing={2} direction="row" sx={{backgroundColor: theme.palette.grey[200], padding: '10px'}}>
-                {propertyData.map(({label, value}) => (
-                    <Grid item xs={12} sm={12}  key={label} >
-                        <Box direction="row" key={label}>
-                          <Typography variant="body2">{label}</Typography>
-                          <Typography variant="body1" align='justify' sx={style}>{value}</Typography>
-                        </Box>
-                    </Grid>
-                  ))}
+
+        <Grid item xs={4}>
+          <Grid container spacing={2} direction="row" sx={{padding: '10px'}}>
+            {propertyData.map((item, index) => (
+              <Grid item xs={12} sm={12} key={item.label}>
+                <Box direction="row" key={item.label} marginTop ={index === propertyData.length - 1 ? 5 : 0}>
+                  <Typography variant="body2" >{item.label}</Typography>
+                  <Typography variant="body1" align='justify' sx={item.style}>{item.value}</Typography>
+                </Box>
               </Grid>
-            </Grid>
-          <Grid item xs={8}>
-            {property.images}
+            ))}
           </Grid>
+        </Grid>
+
+          <Grid item xs={8} >
+          <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              {currentProperty && currentProperty.images && currentProperty.images.length > 0 && (
+                <>
+                  {renderMainImage(currentProperty.images[0], currentProperty.name)}
+                  <Box sx={{ overflowY: 'auto', flexGrow: 1 }}>
+                    {renderImageList(currentProperty.images.slice(1))}
+                  </Box>
+                </>
+              )}
+          </Box>
+          </Grid>
+
       </Grid>
     </Box>
   )
