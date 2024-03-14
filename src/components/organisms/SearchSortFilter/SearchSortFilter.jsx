@@ -32,7 +32,7 @@ export  const SearchSortFilter = () => {
       const newSelectedTypes = event.target.checked
         ? [...prevSelectedTypes, type]
         : prevSelectedTypes.filter((t) => t !== type)
-      setFilter({ type: newSelectedTypes })
+      setFilter({ types: newSelectedTypes })
       return newSelectedTypes
     })
   }
@@ -118,11 +118,11 @@ export  const SearchSortFilter = () => {
               </Grid>  
             </Box>
           <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> Close </Button>
-          <Button onClick={resetFiltersAndCheckbox} size="small" sx={{marginY: "30px"}} variant="contained"> Reset </Button>
+          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> Reset </Button>
         </AccordionDetails>
       </Accordion>       
         { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) && !expanded && 
-          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "10px"}} variant="contained"> Reset choice </Button>
+          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> Reset choice </Button>
         }
     </Box>
   )
