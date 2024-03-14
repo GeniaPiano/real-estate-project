@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 import { Stack, Button, IconButton, Box, Card, CardContent, CardMedia, Typography, Grid } from '@mui/material'
 import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite' 
+import LocationOnIcon from '@mui/icons-material/LocationOn'
 import { useTheme } from '@mui/material/styles'
-import { SearchSortFilter } from '../../organisms/SearchSortFilter/SearchSortFilter'
 import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner'
 import { useImageWidth } from '../../../hooks/useImageWidth/useImageWidth'
 import { propertyStyle } from '../PropertiesList/propertyStyle'
 import { usePropertiesStore } from '../../../stores/usePropertiesStore'
 import { Pagination } from '../../molecules/Pagination/Pagination'
+import { NotFoundProperties } from '../../atoms/NotFoundProperties/NotFoundProperties'
 import './PropertiesList.css'
 
 export const PropertiesList = () => {
@@ -36,7 +37,7 @@ export const PropertiesList = () => {
 
   return (
     <> 
-      <SearchSortFilter />
+      {filteredProperties.length === 0 && <NotFoundProperties message="Sorry, no properties were found" /> }
       <Pagination
         total={filteredProperties.length}
         perPage={PER_PAGE}
@@ -49,6 +50,7 @@ export const PropertiesList = () => {
             <Card sx={{height: "100%"}}>
               <CardContent>
                 <Typography sx={style.title}> {el.name} </Typography>
+                 <Typography sx={style.type}> {el.type} </Typography>
                   <Box sx={style.imageIconsWrapper}>
                     <Box sx={style.imageWrapper}>
                       <CardMedia
@@ -67,8 +69,11 @@ export const PropertiesList = () => {
                       </Stack>
                     </Box>
                 <Typography className="description" variant="body2" > {el.description} </Typography>
-                <Stack direction="row" spacing={2} alignItems="center">
-                    <Typography sx={style.city}> {el.city} </Typography>
+                <Stack direction="row" spacing={2} marginTop={2}>
+                   <Stack direction="row" sx={style.city}>
+                    <LocationOnIcon/>
+                    <Typography > {el.city} </Typography>
+                   </Stack>
                     <Typography sx={style.price}> {`${el.price}  PLN`} </Typography>
                 </Stack>
                   <Box sx={style.buttonWrapper}>
