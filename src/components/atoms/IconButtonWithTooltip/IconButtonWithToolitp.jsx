@@ -19,10 +19,7 @@ return (
     <Tooltip title={title}>
       <span>{button}</span>
     </Tooltip>
-  )  
-
-  
-
+  )
 }
 
 IconButtonWithTooltip.propTypes = {
