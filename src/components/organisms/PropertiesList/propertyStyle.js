@@ -4,15 +4,13 @@ export const propertyStyle = (theme, width) => {
       color: theme.palette.primary.main,
       fontWeight: "bold",
     },
-    type: {
-      color: theme.palette.secondary.greyDark,
-    },
     city: {
-      color: theme.palette.secondary.main,
-      fontWeight: "bold"
+      color: theme.palette.secondary.grey,
+      marginTop: "10px"
     },
     price: {
       color: theme.palette.primary.main,
+      marginTop: "10px"
     },
     button: {
       borderRadius: "20px", 

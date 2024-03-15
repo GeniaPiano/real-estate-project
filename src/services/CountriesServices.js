@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-// const apiUrl = import.meta.env.VITE_REACT_APP_API_URL
-const apiUrl = 'https://restcountries.com/v3.1/all'
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL
 
 export const countriesService = {
   fetchAll: async () => {
