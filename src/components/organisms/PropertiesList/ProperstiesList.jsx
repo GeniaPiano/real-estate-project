@@ -44,14 +44,14 @@ export const PropertiesList = () => {
     navigate(`/property/${id}`)
   }
 
-  const renderButton = (id) => 
+  const renderButton = (id, style) => 
       <Button
           onClick={() => {
             handleNavigateToProperty(id)
           }}
           size="small"
           variant="contained"
-          sx={style.button}
+          sx={style || style.button}
         >
           View more
       </Button>
@@ -119,7 +119,7 @@ export const PropertiesList = () => {
                     <Typography sx={style.price}> {`${el.price}  PLN`} </Typography>
                   </Stack>
                   <Box sx={style.buttonWrapper}>
-                    {renderButton(el.id)}
+                    {renderButton(el.id, style.buttonDialog)}
                   </Box>
                 </CardContent>
               </Card>
@@ -127,7 +127,7 @@ export const PropertiesList = () => {
           ))}
       </Grid>
       <Dialog open={isOpenDialog} onClose={handleCloseDialog}>
-           <DialogTitle as={Box} sx={{ display: "flex",  flexDirection: isSmallScreen ? 'column' : 'row', alignContent: "center", justifyItems: "center", gap: "10px" }} > 
+           <DialogTitle as={Stack} sx={{textAlign: 'center'}} >
             {selectedProperty?.name}  
             {renderButton(selectedProperty?.id, style.buttonDialog)}
            </DialogTitle>

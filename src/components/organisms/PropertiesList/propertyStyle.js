@@ -22,6 +22,9 @@ export const propertyStyle = (theme, width) => {
       display: "flex",
       justifyContent: "flex-end"
     },
+    buttonDialog: {
+      marginTop: "5px",
+    },
     image: {
       width: width, 
       height: 150,
