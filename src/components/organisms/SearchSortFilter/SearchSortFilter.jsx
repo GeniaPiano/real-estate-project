@@ -12,8 +12,8 @@ export  const SearchSortFilter = () => {
   const [expanded, setExpanded] = useState(false)
   const { properties, setFilter, resetFilters } = usePropertiesStore()
   const theme = useTheme()
-  const uniquePropertyCities = [...new Set(properties.map((property) => property.city))]
-  const uniquePropertyTypes = [...new Set(properties.map((property) => property.type))]
+  const uniquePropertyCities = properties ? [...new Set(properties.map((property) => property.city))] : []
+  const uniquePropertyTypes = properties ? [...new Set(properties.map((property) => property.type))] : []
 
   const handleSelectCities = (event) => {
     const city = event.target.name;
@@ -23,7 +23,7 @@ export  const SearchSortFilter = () => {
         : prevSelectedCities.filter((c) => c !== city)
       setFilter({ cities: newSelectedCities })
       return newSelectedCities
-    })  
+    })
   }
 
   const handleSelectTypes = (event) => {

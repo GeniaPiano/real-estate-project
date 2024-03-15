@@ -1,18 +1,24 @@
-import { useEffect } from 'react'
-import { Typography, Box, Grid, ImageList, ImageListItem, CardMedia, Paper } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { Typography, Box, Grid, ImageList, ImageListItem, CardMedia, Paper, useScrollTrigger } from '@mui/material'
 import { useParams } from 'react-router'
 import { TitlePage } from '../../components/atoms/TitlePage/TitlePage'
-// import { useProperty } from '../../hooks/useProperty/useProperty'
 import { usePropertiesStore } from '../../stores/usePropertiesStore'
-import { useTheme, alpha } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import { LoadingSpinner } from '../../components/atoms/LoadingSpinner/LoadingSpinner'
 import { NotFoundProperties } from '../../components/atoms/NotFoundProperties/NotFoundProperties'
 
 export const PropertyPage = () => {
+const [currentProperty, setCurrentProperty] = useState(null)
 const {id} = useParams()
 const theme = useTheme()
-const { currentProperty, fetchPropertyById, isLoading, error } = usePropertiesStore()
+const { fetchProperties, isLoading, error, properties, fetchPropertyById } = usePropertiesStore()
 
+useEffect(() => {
+  fetchProperties()
+  if ( properties && properties.length > 0 ) {
+    setCurrentProperty(properties.find(el => Number(el.id) === Number(id)))
+  }
+}, [ ])
 
 const style = {
   name: {
@@ -87,15 +93,9 @@ if (currentProperty) propertyData.push(
     </ImageList>
   )
 
-  useEffect(() => {
-    if (id) {
-      fetchPropertyById(id)
-    }
-  }, [id])
-
-    if (isLoading) return <LoadingSpinner/>
-    if (error) return <NotFoundProperties message="Something went wrong, try again later." />
-    if (!isLoading && !currentProperty) return <NotFoundProperties message="Property not found." />
+   if (isLoading) return <LoadingSpinner/>
+   if (error) return <NotFoundProperties message="Something went wrong, try again later." />
+   if (!isLoading && !currentProperty) return <NotFoundProperties message="Property not found." />
 
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>

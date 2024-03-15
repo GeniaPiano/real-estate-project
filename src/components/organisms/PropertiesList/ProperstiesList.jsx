@@ -4,12 +4,12 @@ import { Stack, Button, IconButton, Box, Card, CardContent, CardMedia, Typograph
 import ShareIcon from '@mui/icons-material/Share'
 import FavoriteIcon from '@mui/icons-material/Favorite' 
 import { useTheme } from '@mui/material/styles'
-import { SearchSortFilter } from '../../organisms/SearchSortFilter/SearchSortFilter'
 import { LoadingSpinner } from '../../atoms/LoadingSpinner/LoadingSpinner'
 import { useImageWidth } from '../../../hooks/useImageWidth/useImageWidth'
 import { propertyStyle } from '../PropertiesList/propertyStyle'
 import { usePropertiesStore } from '../../../stores/usePropertiesStore'
 import { Pagination } from '../../molecules/Pagination/Pagination'
+import { NotFoundProperties } from '../../atoms/NotFoundProperties/NotFoundProperties'
 import './PropertiesList.css'
 
 export const PropertiesList = () => {
@@ -17,11 +17,12 @@ export const PropertiesList = () => {
   const width = useImageWidth()
   const navigate = useNavigate()
   const style = propertyStyle(theme, width)
-  const { properties, fetchProperties, isLoading, filteredProperties, setFilter } = usePropertiesStore()
+  const { properties, fetchProperties, isLoading, filteredProperties } = usePropertiesStore()
   const PER_PAGE = 8
   const [page, setPage] = useState(1)
   const startIndex = (page - 1) * PER_PAGE
-  const paginatedProperties = filteredProperties.slice(startIndex, startIndex + PER_PAGE)
+  const paginatedProperties = filteredProperties ? filteredProperties.slice(startIndex, startIndex + PER_PAGE) : []
+
   const handleNavigateToProperty = (id) => {
     navigate(`/property/${id}`)
   }
@@ -36,13 +37,13 @@ export const PropertiesList = () => {
 
   return (
     <> 
-      <SearchSortFilter />
+      {filteredProperties && filteredProperties.length === 0 && <NotFoundProperties message="No properties found, change your search criteria." />}
       <Pagination
-        total={filteredProperties.length}
+        total={filteredProperties ? filteredProperties.length : 0}
         perPage={PER_PAGE}
         currentPage={page}
         onPageChange={setPage}  
-      />
+        />
       <Grid container spacing={2} marginTop={1}>
         {properties && paginatedProperties.map((el) => 
           <Grid item key={el.id} xs={12} sm={6} md={6} lg={3}>

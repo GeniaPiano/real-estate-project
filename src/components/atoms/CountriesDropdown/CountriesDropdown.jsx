@@ -31,6 +31,7 @@ export const CountriesDropdown = () => {
                   backgroundColor: '#fff',
                   width: '300px'
                 }}
+                value={el.countryName}
                 key={index}
               >
                 {el.countryName}
