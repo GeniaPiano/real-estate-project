@@ -42,6 +42,17 @@ export const propertyStyle = (theme, width) => {
       padding: "5px",
       display: "flex",
       maxWidth: 300
+    }, 
+    imageDialog: {
+      maxWidth: '100%',
+      maxHeight: 'calc(100vh - 300px)',
+      objectFit: 'contain'
+      
+    },
+    closeButtonWrapper: {
+      display: "flex",
+      justifyContent: "flex-end",
+      padding: "0 10px"
     }
   }
 }

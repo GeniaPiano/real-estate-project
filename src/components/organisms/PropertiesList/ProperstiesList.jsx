@@ -24,6 +24,8 @@ import { usePropertiesStore } from '../../../stores/usePropertiesStore'
 import { Pagination } from '../../molecules/Pagination/Pagination'
 import { NotFoundProperties } from '../../atoms/NotFoundProperties/NotFoundProperties'
 import { useMediaQuery } from '@mui/material'
+import { IconButtonWithTooltip } from '../../atoms/IconButtonWithTooltip/IconButtonWithToolitp'
+import CloseIcon from '@mui/icons-material/Close'
 import './PropertiesList.css'
 
 export const PropertiesList = () => {
@@ -127,6 +129,9 @@ export const PropertiesList = () => {
           ))}
       </Grid>
       <Dialog open={isOpenDialog} onClose={handleCloseDialog}>
+            <Box sx={style.closeButtonWrapper}>
+               <IconButtonWithTooltip title="Close" ariaLabel="close" icon={<CloseIcon />} handleClick={handleCloseDialog} />
+            </Box>
            <DialogTitle as={Stack} sx={{textAlign: 'center'}} >
             {selectedProperty?.name}  
             {renderButton(selectedProperty?.id, style.buttonDialog)}
@@ -137,6 +142,7 @@ export const PropertiesList = () => {
                 component="img"
                 image={selectedProperty.images[0]}
                 alt={selectedProperty.name}
+                sx={style.imageDialog}
               />
             )}
         </DialogContent>
