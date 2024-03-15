@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const propertiesService = {
   fetchAll: async () => {
-    const propertiesFromApi = await axios.get('./../data/db.json')
+    const propertiesFromApi = await axios.get('./db.json')
     return propertiesFromApi.data.properties
   },
   fetchById: async (id) => {
