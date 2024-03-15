@@ -2,17 +2,16 @@ import { Select, MenuItem, InputLabel, FormControl, Box } from '@mui/material'
 import { useCountries } from './../../../hooks/useCountries/useCountries'
 import { useState } from 'react'
 
-
 export const CountriesDropdown = () => {
   const [selectedCountry, setSelectedCountry] = useState('')
   const dataCountries = useCountries()
   const handleChange = (event) => {
-    setSelectedCountry(event.target.value);
+    setSelectedCountry(event.target.value)
   }
 
   return (
-   <Box>
-       <FormControl>
+    <Box>
+      <FormControl>
         <Select
           sx={{
             backgroundColor: '#fff',
@@ -23,11 +22,12 @@ export const CountriesDropdown = () => {
           labelId="country-label"
           value={selectedCountry}
           onChange={handleChange}
+          defaultValue="select country"
         >
           {dataCountries &&
             dataCountries.map((el, index) => (
               <MenuItem
-                  sx={{
+                sx={{
                   backgroundColor: '#fff',
                   width: '300px'
                 }}
@@ -39,7 +39,6 @@ export const CountriesDropdown = () => {
             ))}
         </Select>
       </FormControl>
-    
-   </Box>
+    </Box>
   )
 }

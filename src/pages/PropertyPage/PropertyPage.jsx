@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Typography, Box, Grid, ImageList, ImageListItem, CardMedia, Paper, useScrollTrigger } from '@mui/material'
+import { Typography, Box, Grid, ImageList, ImageListItem, CardMedia, Button } from '@mui/material'
 import { useParams } from 'react-router'
 import { TitlePage } from '../../components/atoms/TitlePage/TitlePage'
 import { usePropertiesStore } from '../../stores/usePropertiesStore'
@@ -18,7 +18,7 @@ useEffect(() => {
   if ( properties && properties.length > 0 ) {
     setCurrentProperty(properties.find(el => Number(el.id) === Number(id)))
   }
-}, [ ])
+}, [])
 
 const style = {
   name: {
@@ -99,7 +99,8 @@ if (currentProperty) propertyData.push(
 
   return (
     <Box sx={{ width: '100%', overflow: 'hidden' }}>
-      <TitlePage title="Property Details"/>
+      {/* <Button variant="contained"> Back </Button> */}
+      <TitlePage title="Property Details" backToHomePage={true} />
 
       <Grid 
           padding={1}  
@@ -113,11 +114,11 @@ if (currentProperty) propertyData.push(
             }} 
           >
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <Grid container spacing={2} direction="row" sx={{padding: '10px'}}>
             {propertyData.map((item, index) => (
               <Grid item xs={12} sm={12} key={item.label}>
-                <Box direction="row" key={item.label} marginTop ={index === propertyData.length - 1 ? 5 : 0}>
+                <Box key={item.label} marginTop ={index === propertyData.length - 1 ? 5 : 0}>
                   <Typography variant="body2" >{item.label}</Typography>
                   <Typography variant="body1" align='justify' sx={item.style}>{item.value}</Typography>
                 </Box>
@@ -126,7 +127,7 @@ if (currentProperty) propertyData.push(
           </Grid>
         </Grid>
 
-          <Grid item xs={8} >
+          <Grid item xs={12} sm={8} >
           <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
               {currentProperty && currentProperty.images && currentProperty.images.length > 0 && (
                 <>

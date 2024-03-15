@@ -13,7 +13,6 @@ export const propertyStyle = (theme, width) => {
       marginTop: "10px"
     },
     button: {
-      borderRadius: "20px", 
       textTransform: "none", 
       paddingY: "1px",
       paddingX: "10px",
@@ -26,7 +25,8 @@ export const propertyStyle = (theme, width) => {
     image: {
       width: width, 
       height: 150,
-      maxWidth: '100%'
+      maxWidth: '100%',
+      cursor: 'pointer'
     },
     imageIconsWrapper: {
       padding: "10px 0",
