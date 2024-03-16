@@ -1,3 +1,4 @@
+import React from 'react'
 import { Box, Button } from '@mui/material'
 import { IconButtonWithTooltip } from '../../atoms/IconButtonWithTooltip/IconButtonWithToolitp'
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'

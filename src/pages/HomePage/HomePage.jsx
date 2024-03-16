@@ -1,3 +1,4 @@
+import React from "react"
 import { PropertiesList } from '../../components/organisms/PropertiesList/ProperstiesList'
 import { SearchSortFilter } from '../../components/organisms/SearchSortFilter/SearchSortFilter'
 

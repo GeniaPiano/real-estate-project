@@ -1,3 +1,4 @@
+import React from "react"
 import { Routes, Route } from 'react-router-dom'
 import { HomePage } from './pages/HomePage/HomePage'
 import { MainLayout } from './layouts/MainLayout/MainLayout'
