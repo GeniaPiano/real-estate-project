@@ -1,9 +1,10 @@
 import { Select, MenuItem, FormControl, Box } from "@mui/material";
 import { useCountries } from "../../../hooks/useCountries/useCountries";
 import { useState } from "react";
+import { Country } from "./types";
 
 export const CountriesDropdown = () => {
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState<Country | "">("");
   const dataCountries = useCountries();
   const handleChange = (event) => {
     setSelectedCountry(event.target.value);

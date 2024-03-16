@@ -1,8 +1,8 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, ThemeOptions } from "@mui/material/styles";
 
-export const theme = createTheme({
+const themeOptions: ThemeOptions = {
   palette: {
-    type: "light",
+    mode: "light",
     primary: {
       main: "#0aa4a8",
       green: "#27d07d",
@@ -18,4 +18,6 @@ export const theme = createTheme({
       anthracite: "#1A1A1A",
     },
   },
-});
+};
+
+export const theme = createTheme(themeOptions);
