@@ -7,7 +7,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 250000,
       "surface": 70,
-      "images": ["https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Warsaw"
     },
     {
@@ -17,7 +20,10 @@
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 500000,
       "surface": 150,
-      "images": ["https://cf.bstatic.com/xdata/images/hotel/max1024x768/402061436.jpg?k=621cca3ae0bc480b54277669caddd8c4a7424b6acdb2ec1d843753d4fdd35a33&o=&hp=1", "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://cf.bstatic.com/xdata/images/hotel/max1024x768/402061436.jpg?k=621cca3ae0bc480b54277669caddd8c4a7424b6acdb2ec1d843753d4fdd35a33&o=&hp=1",
+        "https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Krakow"
     },
     {
@@ -27,7 +33,10 @@
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "price": 120000,
       "surface": 40,
-      "images": ["https://media.istockphoto.com/id/1300140251/pl/zdj%C4%99cie/agent-nieruchomo%C5%9Bci-trzymaj%C4%85cy-klucze-do-nowego-mieszkania.jpg?s=2048x2048&w=is&k=20&c=dNTLbtt_tjqnIoluoxbjIRgVb7Tt_y-bowgu6nt8WmQ=", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://media.istockphoto.com/id/1300140251/pl/zdj%C4%99cie/agent-nieruchomo%C5%9Bci-trzymaj%C4%85cy-klucze-do-nowego-mieszkania.jpg?s=2048x2048&w=is&k=20&c=dNTLbtt_tjqnIoluoxbjIRgVb7Tt_y-bowgu6nt8WmQ=",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Gdansk"
     },
     {
@@ -37,7 +46,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 350000,
       "surface": 90,
-      "images": ["https://images.pexels.com/photos/163046/welcome-to-our-home-welcome-tablet-an-array-of-163046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/163046/welcome-to-our-home-welcome-tablet-an-array-of-163046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Warsaw"
     },
     {
@@ -47,7 +59,10 @@
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 300000,
       "surface": 120,
-      "images": ["https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/667838/pexels-photo-667838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Poznan"
     },
     {
@@ -57,7 +72,10 @@
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "price": 450000,
       "surface": 110,
-      "images": ["https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Krakow"
     },
     {
@@ -67,7 +85,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 550000,
       "surface": 180,
-      "images": ["https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Warsaw"
     },
     {
@@ -77,7 +98,10 @@
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 700000,
       "surface": 200,
-      "images": ["https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Zakopane"
     },
     {
@@ -87,7 +111,10 @@
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "price": 180000,
       "surface": 50,
-      "images": ["https://images.pexels.com/photos/53782/pexels-photo-53782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/53782/pexels-photo-53782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Wroclaw"
     },
     {
@@ -97,7 +124,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 250000,
       "surface": 100,
-      "images": ["https://images.pexels.com/photos/6032280/pexels-photo-6032280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/6032280/pexels-photo-6032280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Masuria"
     },
     {
@@ -107,7 +137,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "price": 600000,
       "surface": 120,
-      "images": ["https://images.pexels.com/photos/4846456/pexels-photo-4846456.jpeg?auto=compress&cs=tinysrgb&w=600", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/4846456/pexels-photo-4846456.jpeg?auto=compress&cs=tinysrgb&w=600",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Warsaw"
     },
     {
@@ -117,7 +150,10 @@
       "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 900000,
       "surface": 220,
-      "images": ["https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/1268871/pexels-photo-1268871.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Sopot"
     },
     {
@@ -127,7 +163,10 @@
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 750000,
       "surface": 180,
-      "images": ["https://images.pexels.com/photos/5997996/pexels-photo-5997996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/5997996/pexels-photo-5997996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Krakow"
     },
     {
@@ -137,7 +176,10 @@
       "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "price": 400000,
       "surface": 100,
-      "images": ["https://images.pexels.com/photos/12715612/pexels-photo-12715612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/12715612/pexels-photo-12715612.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Wroclaw"
     },
     {
@@ -147,7 +189,10 @@
       "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 320000,
       "surface": 80,
-      "images": ["https://images.pexels.com/photos/4969845/pexels-photo-4969845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg", "https://www.pexels.com/photo/beige-bungalow-house-259588/g"],
+      "images": [
+        "https://images.pexels.com/photos/4969845/pexels-photo-4969845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1.jpg",
+        "https://www.pexels.com/photo/beige-bungalow-house-259588/g"
+      ],
       "city": "Zakopane"
     },
     {
@@ -157,7 +202,10 @@
       "description": "Consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 280000,
       "surface": 150,
-      "images": ["https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Plock"
     },
     {
@@ -167,7 +215,10 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "price": 1200000,
       "surface": 300,
-      "images": ["https://images.pexels.com/photos/12715502/pexels-photo-12715502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/12715502/pexels-photo-12715502.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Gdynia"
     },
     {
@@ -177,7 +228,10 @@
       "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       "price": 480000,
       "surface": 110,
-      "images": ["https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/1005058/pexels-photo-1005058.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Warsaw"
     },
     {
@@ -187,7 +241,10 @@
       "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
       "price": 550000,
       "surface": 200,
-      "images": ["https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Szczecin"
     },
     {
@@ -197,7 +254,10 @@
       "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "price": 680000,
       "surface": 160,
-      "images": ["https://images.pexels.com/photos/4582591/pexels-photo-4582591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"],
+      "images": [
+        "https://images.pexels.com/photos/4582591/pexels-photo-4582591.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "https://images.pexels.com/photos/7414907/pexels-photo-7414907.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      ],
       "city": "Poznan"
     }
   ]
