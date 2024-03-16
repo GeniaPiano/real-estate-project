@@ -1,0 +1,10 @@
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  padding-top: 5px;
+  text-align: justify; 
+  text-justify: inter-word;
+}
