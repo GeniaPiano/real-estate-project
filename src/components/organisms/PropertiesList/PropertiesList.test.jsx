@@ -1,15 +1,13 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react'
-import '@testing-library/jest-dom';
+import React from 'react'
+import '@testing-library/jest-dom'
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import { PropertiesList } from './ProperstiesList.jsx'
+import { useNavigate } from 'react-router'
 import { usePropertiesStore } from '../../../stores/usePropertiesStore'
-jest.mock('../../../stores/usePropertiesStore', () => ({
-  usePropertiesStore: jest.fn(),
-}))
 
-jest.mock('react-router', () => ({
-  useNavigate: jest.fn(),
-}));
+const mockProperties = [
+  { id: 1, name: 'Property 1', city: 'City 1', price: '1000', images: ['url1'], description: 'Description 1' }
+]
 
 describe('PropertiesList', () => {
   it('renders loading spinner when fetching properties', async () => {
@@ -17,33 +15,57 @@ describe('PropertiesList', () => {
       properties: [],
       fetchProperties: jest.fn(),
       isLoading: true,
-      filteredProperties: [],
-    }));
+      filteredProperties: []
+    }))
 
-    render(<PropertiesList />);
-    expect(screen.getByText(/loading/i)).toBeInTheDocument();
-  });
+    render(<PropertiesList />)
+    expect(screen.getByText(/loading/i)).toBeInTheDocument()
+  })
 
   it('renders properties when data is fetched', async () => {
-    const mockProperties = [
-      { id: 1, name: 'Property 1', city: 'City 1', price: '1000', images: ['url1'], description: 'Description 1' }  
-    ]
-
     usePropertiesStore.mockImplementation(() => ({
       properties: mockProperties,
       fetchProperties: jest.fn(),
       isLoading: false,
-      filteredProperties: mockProperties,
+      filteredProperties: mockProperties
     }))
 
-    render(<PropertiesList />);
+    render(<PropertiesList />)
 
     await waitFor(() => {
-      expect(screen.getByText('Property 1')).toBeInTheDocument();
-      expect(screen.getByText('City 1')).toBeInTheDocument();
-      expect(screen.getByText('1000 PLN')).toBeInTheDocument();
-    });
-  });
+      expect(screen.getByText('Property 1')).toBeInTheDocument()
+      expect(screen.getByText('City 1')).toBeInTheDocument()
+      expect(screen.getByText('1000 PLN')).toBeInTheDocument()
+    })
+  })
+})
 
-  // Add more tests as needed to cover different scenarios and interactions
-});
+jest.mock('../../../stores/usePropertiesStore', () => ({
+  usePropertiesStore: jest.fn()
+}))
+
+jest.mock('react-router', () => ({
+  ...jest.requireActual('react-router'),
+  useNavigate: jest.fn()
+}))
+
+describe('PropertiesList', () => {
+  it('redirects to property detail page when "View more" button is clicked', async () => {
+    usePropertiesStore.mockReturnValue({
+      properties: mockProperties,
+      fetchProperties: jest.fn(),
+      isLoading: false,
+      filteredProperties: mockProperties
+    })
+
+    const mockNavigate = jest.fn()
+    useNavigate.mockReturnValue(mockNavigate)
+
+    render(<PropertiesList />)
+
+    const viewMoreButton = screen.getByRole('button', { name: /view more/i })
+    fireEvent.click(viewMoreButton)
+
+    expect(mockNavigate).toHaveBeenCalledWith(`/property/${mockProperties[0].id}`)
+  })
+})
