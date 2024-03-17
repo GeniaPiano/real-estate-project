@@ -1,80 +1,67 @@
 import "@testing-library/jest-dom";
-import {render, screen, waitFor, fireEvent} from "@testing-library/react";
-import {PropertiesList} from "./ProperstiesList.js";
-import {useNavigate} from "react-router-dom";
-import {usePropertiesStore} from "../../../stores/usePropertiesStore.js";
-import {vi} from "vitest"
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen} from "@testing-library/react";
+import { MemoryRouter } from 'react-router-dom';
+import { usePropertiesStore } from "../../../stores/usePropertiesStore";
+import {PropertiesList} from "./ProperstiesList.tsx";
 
-const mockProperties = [
-    {
-        id: 1,
-        name: "Property 1",
-        city: "City 1",
-        price: "1000",
-        images: ["url1"],
-        description: "Description 1",
-    },
-];
+const mockProperties = Array.from({ length: 15 }, (_, index) => ({
+    id: index + 1,
+    name: `Property ${index + 1}`,
+    city: `City ${index + 1}`,
+    price: 100000 + (index * 1000), // Increment price for variety
+    images: [`url${index + 1}`],
+    description: `Description ${index + 1}`,
+    type: `Type ${index + 1}`,
+}));
+vi.mock("../../../stores/usePropertiesStore", () => ({
+    usePropertiesStore: vi.fn(() => ({
+        properties: mockProperties,
+        fetchProperties: vi.fn(),
+        isLoading: false,
+        error: null,
+        filteredProperties: mockProperties,
+    })),
+}));
 
-describe.skip("PropertiesList", () => {
-    it("renders loading spinner when fetching properties", async () => {
+describe('PropertiesList Component', () => {
+    beforeEach(() => {
+        vi.resetAllMocks();
+    });
+
+    it("renders properties and handles pagination", () => {
+        const mockFetchProperties = vi.fn();
+        // @ts-ignore
         usePropertiesStore.mockImplementation(() => ({
+            properties: mockProperties,
+            fetchProperties: mockFetchProperties,
+            isLoading: false,
+            filteredProperties: mockProperties,
+        }));
+
+        render(
+            <MemoryRouter>
+                <PropertiesList />
+            </MemoryRouter>
+        );
+        expect(screen.getByText("Property 1")).toBeInTheDocument();
+        expect(screen.getByTestId("button_0")).toBeInTheDocument();
+        });
+
+    it("displays a loading indicator when properties are being fetched", () => {
+        // @ts-ignore
+        usePropertiesStore.mockReturnValue({
             properties: [],
             fetchProperties: vi.fn(),
             isLoading: true,
             filteredProperties: [],
-        }));
-
-        render(<PropertiesList/>);
-        expect(screen.getByText(/loading/i)).toBeInTheDocument();
-    });
-
-    it("renders properties when data is fetched", async () => {
-        usePropertiesStore.mockImplementation(() => ({
-            properties: mockProperties,
-            fetchProperties: jest.fn(),
-            isLoading: false,
-            filteredProperties: mockProperties,
-        }));
-
-        render(<PropertiesList/>);
-
-        await waitFor(() => {
-            expect(screen.getByText("Property 1")).toBeInTheDocument();
-            expect(screen.getByText("City 1")).toBeInTheDocument();
-            expect(screen.getByText("1000 PLN")).toBeInTheDocument();
-        });
-    });
-});
-
-// jest.mock("../../../stores/usePropertiesStore", () => ({
-//     usePropertiesStore: jest.fn(),
-// }));
-//
-// jest.mock("react-router", () => ({
-//     ...jest.requireActual("react-router"),
-//     useNavigate: jest.fn(),
-// }));
-
-describe.skip("PropertiesList", () => {
-    it('redirects to property detail page when "View more" button is clicked', async () => {
-        usePropertiesStore.mockReturnValue({
-            properties: mockProperties,
-            fetchProperties: jest.fn(),
-            isLoading: false,
-            filteredProperties: mockProperties,
         });
 
-        const mockNavigate = jest.fn();
-        useNavigate.mockReturnValue(mockNavigate);
-
-        render(<PropertiesList/>);
-
-        const viewMoreButton = screen.getByRole("button", {name: /view more/i});
-        fireEvent.click(viewMoreButton);
-
-        expect(mockNavigate).toHaveBeenCalledWith(
-            `/property/${mockProperties[0].id}`
+        render(
+            <MemoryRouter>
+                <PropertiesList />
+            </MemoryRouter>
         );
+        expect(screen.getByText("loading...")).toBeInTheDocument();
+       });
     });
-});
