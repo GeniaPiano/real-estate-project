@@ -8,13 +8,14 @@ import {
     CardMedia
 } from "@mui/material";
 import {useParams} from "react-router-dom";
-import {TitlePage} from "../../components/atoms/TitlePage/TitlePage";
-import {useTheme} from "@mui/material/styles";
+import {TitleHeader} from "../../components/atoms/TitleHeader/TitleHeader.tsx";
 import {LoadingSpinner} from "../../components/atoms/LoadingSpinner/LoadingSpinner";
 import {NotFoundProperties} from "../../components/atoms/NotFoundProperties/NotFoundProperties";
 import {propertiesService} from "../../services/PropertiesServices.ts";
 import {Property} from "../../types/Property.ts";
 import {ErrMessage} from "./types.ts";
+import {style} from "./style.ts";
+import {PropertyPageMessages} from "./messages.ts";
 
 
 export const PropertyPage = () => {
@@ -23,7 +24,6 @@ export const PropertyPage = () => {
     const [error, setError] = useState<null | ErrMessage>(null)
     const {id} = useParams();
     const propertyId = id ? parseInt(id, 10) : null
-    const theme = useTheme();
 
     useEffect(() => {
         setLoading(true)
@@ -52,50 +52,33 @@ export const PropertyPage = () => {
         return () => clearTimeout(timeoutId);
     }, [id, propertyId])
 
-    const style = {
-        name: {
-            fontSize: "20px",
-            fontWeight: "bold",
-        },
-        price: {
-            fontSize: "18px",
-        },
-        city: {
-            fontSize: "16px",
-        },
-        surface: {
-            fontSize: "16px",
-        },
-        description: {
-            fontSize: "16px",
-        },
-    };
+
 
     const propertyData = [];
     if (currentProperty)
         propertyData.push(
             {
-                label: "Title",
+                label: PropertyPageMessages.title,
                 value: currentProperty.name,
                 style: style.name,
             },
             {
-                label: "Price",
+                label: PropertyPageMessages.price,
                 value: `${currentProperty.price} PLN`,
                 style: style.price,
             },
             {
-                label: "City",
+                label: PropertyPageMessages.city,
                 value: currentProperty.city,
                 style: style.city,
             },
             {
-                label: "Surface",
+                label: PropertyPageMessages.surface,
                 value: `${currentProperty.surface} m2`,
                 style: style.surface,
             },
             {
-                label: "Description",
+                label: PropertyPageMessages.description,
                 value: currentProperty.description,
                 style: style.description,
             }
@@ -107,7 +90,7 @@ export const PropertyPage = () => {
             height="auto"
             image={image}
             alt={title}
-            sx={{width: "90%", maxHeight: 300, objectFit: "cover"}}
+            sx={style.cardMedia}
         />
     );
 
@@ -119,7 +102,7 @@ export const PropertyPage = () => {
                         src={item}
                         alt={`Property image ${index}`}
                         loading="lazy"
-                        style={{width: "100%", height: "100%", objectFit: "cover"}}
+                        style={style.image}
                     />
                 </ImageListItem>
             ))}
@@ -137,21 +120,15 @@ export const PropertyPage = () => {
     return (
         <Box sx={{width: "100%", overflow: "hidden"}}>
             {/* <Button variant="contained"> Back </Button> */}
-            <TitlePage title="Property Details" backToHomePage={true}/>
+            <TitleHeader title="Property Details" backToHomePage={true}/>
 
             <Grid
-                padding={1}
                 container
                 spacing={4}
-                sx={{
-                    border: `${theme.palette.divider} 1px solid`,
-                    width: "100%",
-                    margin: "10px 0",
-                    backgroundColor: theme.palette.grey[100],
-                }}
+                sx={style.wrapper}
             >
                 <Grid item xs={12} sm={4}>
-                    <Grid container spacing={2} direction="row" sx={{padding: "10px"}}>
+                    <Grid container spacing={2} direction="row" sx={style.gridOne}>
                         {propertyData.map((item, index) => (
                             <Grid item xs={12} sm={12} key={item.label}>
                                 <Box
@@ -170,7 +147,7 @@ export const PropertyPage = () => {
 
                 <Grid item xs={12} sm={8}>
                     <Box
-                        sx={{display: "flex", flexDirection: "column", height: "100%"}}
+                        sx={style.gridTwo}
                     >
                         {currentProperty &&
                             currentProperty.images &&

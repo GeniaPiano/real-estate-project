@@ -1,11 +1,11 @@
 import {Typography, Box, Button} from "@mui/material";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import {useNavigate} from "react-router-dom";
-import {TitlePageProps} from "./types.ts";
+import {TitleHeaderProps} from "./types.ts";
 import {style} from "./style.ts";
 import {titlePageMessages} from "./messages.ts";
 
-export const TitlePage = ({title, backToHomePage = false}: TitlePageProps) => {
+export const TitleHeader = ({title, backToHomePage = false}: TitleHeaderProps) => {
     const navigate = useNavigate();
     const header = () => (
         <Box sx={style.wrapperCenter} >

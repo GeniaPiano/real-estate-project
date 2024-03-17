@@ -1,9 +1,9 @@
-import { TitlePage } from "../../components/atoms/TitlePage/TitlePage";
+import { TitleHeader } from "../../components/atoms/TitleHeader/TitleHeader.tsx";
 
 export const PostAddPage = () => {
   return (
     <>
-      <TitlePage title="Post an advertisment" />
+      <TitleHeader title="Post an advertisment" />
     </>
   );
 };

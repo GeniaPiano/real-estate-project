@@ -1,9 +1,9 @@
-import { TitlePage } from "../../components/atoms/TitlePage/TitlePage"
+import { TitleHeader } from "../../components/atoms/TitleHeader/TitleHeader.tsx"
 
 export const AccountPage = () => {
   return (
     <>
-      <TitlePage title="Your account"/>
+      <TitleHeader title="Your account"/>
     </>
   )
 }

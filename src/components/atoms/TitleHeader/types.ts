@@ -1,4 +1,4 @@
-export interface TitlePageProps {
+export interface TitleHeaderProps {
     title: string;
     backToHomePage?: boolean;
 }

@@ -13,7 +13,7 @@ vi.mock('react-router-dom', async () => {
         useNavigate: vi.fn(),
     };
 });
-import {TitlePage} from "./TitlePage";
+import {TitleHeader} from "./TitleHeader.tsx";
 
 describe('TitlePage Component', () => {
     let navigateMock: ReturnType<typeof useNavigate>;
@@ -26,7 +26,7 @@ describe('TitlePage Component', () => {
     it("renders title", () => {
         render(
             <MemoryRouter>
-                <TitlePage title='test'/>
+                <TitleHeader title='test'/>
             </MemoryRouter>
         )
         expect(screen.getByText("test")).toBeInTheDocument()
@@ -36,7 +36,7 @@ describe('TitlePage Component', () => {
         const title = 'Sample Title';
         render(
             <MemoryRouter>
-                <TitlePage title={title} backToHomePage={false}/>
+                <TitleHeader title={title} backToHomePage={false}/>
             </MemoryRouter>
         );
 
@@ -48,7 +48,7 @@ describe('TitlePage Component', () => {
         const title = 'Sample Title';
         render(
             <MemoryRouter>
-                <TitlePage title={title} backToHomePage/>
+                <TitleHeader title={title} backToHomePage/>
             </MemoryRouter>
         );
 
@@ -61,7 +61,7 @@ describe('TitlePage Component', () => {
         const title = 'Sample Title';
         render(
             <MemoryRouter>
-                <TitlePage title={title} backToHomePage={false}/>
+                <TitleHeader title={title} backToHomePage={false}/>
             </MemoryRouter>
         );
 
@@ -73,7 +73,7 @@ describe('TitlePage Component', () => {
         const title = 'Sample Title';
         render(
             <MemoryRouter>
-                <TitlePage title={title} backToHomePage/>
+                <TitleHeader title={title} backToHomePage/>
             </MemoryRouter>
         );
 
@@ -86,7 +86,7 @@ describe('TitlePage Component', () => {
         const title = 'Sample Title';
         render(
             <MemoryRouter initialEntries={['/']}>
-                <TitlePage title={title} backToHomePage/>
+                <TitleHeader title={title} backToHomePage/>
             </MemoryRouter>
         );
 
