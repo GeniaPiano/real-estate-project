@@ -15,6 +15,7 @@ export default defineConfig({
                 '**/messages.ts',
                 '**/style.ts',
                 '**/message.ts',
+                '**/main.ts'
                 ]
         }
     },

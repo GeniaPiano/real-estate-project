@@ -1,5 +1,5 @@
 export const FilterPropertiesMessages = {
-    headerTitle: "Filter and sort",
+    headerTitle: "Filter properties",
     priceRange: "Price range",
     selectPropertyType: "Select property type",
     selectCities: "Select cities",
