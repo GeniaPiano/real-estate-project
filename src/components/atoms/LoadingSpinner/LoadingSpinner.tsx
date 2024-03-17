@@ -1,8 +1,8 @@
-import React from 'react'
 import { Box, CircularProgress, Typography } from '@mui/material';
+import {style} from "./style.ts";
 
 export const LoadingSpinner = () => (
-  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '50px', flexDirection: 'column' }}>
+  <Box sx={style.wrapper}>
         <CircularProgress />
         <Typography>Loading... </Typography>    
   </Box>
