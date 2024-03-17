@@ -1,4 +1,4 @@
-export const searchSortFilterMessages = {
+export const FilterPropertiesMessages = {
     headerTitle: "Filter and sort",
     priceRange: "Price range",
     selectPropertyType: "Select property type",

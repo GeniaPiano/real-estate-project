@@ -7,5 +7,15 @@ export default defineConfig({
     test: {
         environment: 'jsdom',
         globals: true,
+        coverage: {
+            exclude: [
+                '**/tests.setup.ts',
+                '**/.eslintrc.cjs',
+                '**/.prettierrc.js',
+                '**/messages.ts',
+                '**/style.ts',
+                '**/message.ts',
+                ]
+        }
     },
 })

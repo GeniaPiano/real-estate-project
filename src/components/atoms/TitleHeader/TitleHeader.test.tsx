@@ -63,7 +63,6 @@ describe('TitlePage Component', () => {
                 <TitleHeader title={title} backToHomePage={false}/>
             </MemoryRouter>
         );
-
         expect(screen.getByText(title)).toBeInTheDocument();
         expect(screen.queryByText('Back to list')).not.toBeInTheDocument();
     });

@@ -1,11 +1,13 @@
-export const propertyStyle = (theme, width) => {
+import {theme} from "../../../assets/theme.ts";
+
+export const propertyStyle = (width: number) => {
   return {
     title: {
       color: theme.palette.primary.main,
       fontWeight: "bold",
     },
     city: {
-      color: theme.palette.secondary.grey,
+      color: theme.palette.grey["600"],
       marginTop: "10px",
     },
     price: {

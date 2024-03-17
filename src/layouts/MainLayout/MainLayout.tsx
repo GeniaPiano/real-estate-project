@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import { AppBar } from "../../components/molecules/AppBar/AppBar";
+import {FC, PropsWithChildren} from "react";
 
-export const MainLayout = ({ children }) => {
+export const MainLayout:FC<PropsWithChildren> = ({ children }) => {
   return (
     <Box
       sx={{

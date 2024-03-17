@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {Country} from "../components/atoms/CountriesDropdown/types.ts";
-import {CountryFromApi} from "../types/Country.ts";
+
+import {Country, CountryFromApi} from "../types/Country.ts";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL
 

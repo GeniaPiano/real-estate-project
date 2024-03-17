@@ -6,8 +6,8 @@ import { PostAddPage } from "./pages/PostAddPage/PostAddPage";
 import { ErrorsPage } from "./pages/ErrorsPage/ErrorsPage";
 import { PropertyPage } from "./pages/PropertyPage/PropertyPage";
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./assets/theme";
 import "./App.css";
+import {theme} from "./assets/theme.ts";
 
 export const App = () => {
   return (

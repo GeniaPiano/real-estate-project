@@ -15,9 +15,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import TuneIcon from '@mui/icons-material/Tune'
 import {usePropertiesStore} from '../../../stores/usePropertiesStore'
 import {style} from "./style.ts";
-import {searchSortFilterMessages} from "./messages.ts";
+import {FilterPropertiesMessages} from "./messages.ts";
 
-export  const SearchSortFilter = () => {
+export  const FilterProperties = () => {
   const [selectedCities, setSelectedCities] = useState<string[]>([])
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000])
   const [selectedTypes, setSelectedTypes] = useState<string[] >([])
@@ -76,11 +76,11 @@ export  const SearchSortFilter = () => {
             id="panel1-header"
           >
             <TuneIcon sx={style.icon}/>
-            <Box> {searchSortFilterMessages.headerTitle} </Box>
+            <Box> {FilterPropertiesMessages.headerTitle} </Box>
         </AccordionSummary>
         <AccordionDetails>  
         <Box>
-          <Typography  sx={style.sectionHeader} variant="h6"> {searchSortFilterMessages.priceRange} </Typography>
+          <Typography  sx={style.sectionHeader} variant="h6"> {FilterPropertiesMessages.priceRange} </Typography>
           <Slider
               sx={style.slider}
               size="small"
@@ -93,7 +93,7 @@ export  const SearchSortFilter = () => {
           </Box>
 
           <Box>
-            <Typography  sx={style.sectionHeader} variant="h6"> {searchSortFilterMessages.selectPropertyType}</Typography>
+            <Typography  sx={style.sectionHeader} variant="h6"> {FilterPropertiesMessages.selectPropertyType}</Typography>
             <Grid container >           
               {uniquePropertyTypes.map((type) => (
                 <Grid item key={type} >
@@ -112,7 +112,7 @@ export  const SearchSortFilter = () => {
            </Grid>  
           </Box>
           <Box>
-            <Typography  sx={style.sectionHeader} variant="h6" > {searchSortFilterMessages.selectCities} </Typography>
+            <Typography  sx={style.sectionHeader} variant="h6" > {FilterPropertiesMessages.selectCities} </Typography>
               <Grid container>
                  {uniquePropertyCities.map((city) => (
                   <Grid item key={city} >
@@ -129,12 +129,12 @@ export  const SearchSortFilter = () => {
                 ))}            
               </Grid>  
             </Box>
-          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {searchSortFilterMessages.select} </Button>
-          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {searchSortFilterMessages.close} </Button>
+          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {FilterPropertiesMessages.select} </Button>
+          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {FilterPropertiesMessages.close} </Button>
         </AccordionDetails>
       </Accordion>       
         { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) && !expanded && 
-          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> {searchSortFilterMessages.resetChoice} </Button>
+          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> {FilterPropertiesMessages.resetChoice} </Button>
         }
     </Box>
   )

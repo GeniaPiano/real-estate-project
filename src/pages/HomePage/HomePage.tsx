@@ -1,9 +1,9 @@
 import { PropertiesList } from "../../components/organisms/PropertiesList/ProperstiesList";
-import { SearchSortFilter } from "../../components/organisms/SearchSortFilter/SearchSortFilter";
+import { FilterProperties } from "../../components/organisms/FilterProperties/FilterProperties.tsx";
 
 export const HomePage = () => (
   <>
-    <SearchSortFilter />
+    <FilterProperties />
     <PropertiesList />
   </>
 );
