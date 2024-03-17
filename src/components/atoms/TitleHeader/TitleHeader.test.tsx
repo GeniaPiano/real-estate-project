@@ -3,8 +3,7 @@ import {it, vi} from 'vitest';
 import {MemoryRouter, useNavigate} from 'react-router-dom'
 import {render, screen} from "@testing-library/react";
 import userEvent from '@testing-library/user-event';
-
-export {userEvent} from '@testing-library/user-event';
+// export {userEvent} from '@testing-library/user-event';
 
 vi.mock('react-router-dom', async () => {
     const originalModule = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
