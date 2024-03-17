@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
-import { propertiesService } from '../../services/PropertiesServices'
+import {useEffect, useState} from 'react'
+import {propertiesService} from '../../services/PropertiesServices'
+import {Property} from "../../types/Property.ts";
 
 export const useProperties = () => {
-  const [properties, setProperties] = useState([])
+    const [properties, setProperties] = useState<Property[] | []>([])
 
-  useEffect(() => {
-    const fetchProperties = async () => {
-      const propertiesFromApi = await propertiesService.fetchAll()
-      setProperties(propertiesFromApi)
-    }
-  fetchProperties()
-  }, [])
+    useEffect(() => {
+        (async () : Promise<void> => {
+            const propertiesFromApi = await propertiesService.fetchAll()
+            setProperties(propertiesFromApi)
+        })()
+    }, [])
 
-  return properties
+    return properties
 }
