@@ -1,17 +1,19 @@
 import axios from 'axios'
+import {Country} from "../components/atoms/CountriesDropdown/types.ts";
+import {CountryFromApi} from "../types/Country.ts";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL
 
 export const countriesService = {
-  fetchAll: async () => {
-    const countriesFromApi = await axios.get(apiUrl)
-    const selectedDatCountries = countriesFromApi.data.map((country) => {
+  fetchAll: async () :Promise<Country[]> => {
+    const countriesFromApi = await axios.get<CountryFromApi[]>(apiUrl)
+    const selectedDatCountries: Country[] = countriesFromApi.data.map((country) => {
       return {
         countryName: country.name.common,
         map: country.maps.googleMaps,
         flag: country.flags.svg
       }
-    })
-    return selectedDatCountries
+    } )
+    return selectedDatCountries as Country[]
   }
 }
