@@ -12,7 +12,7 @@ export const propertiesService = {
         }
     },
 
-    fetchById: async (id: string) => {
+    fetchById: async (id: string | undefined) => {
         try {
             const allProperties : Property[] = await propertiesService.fetchAll();
             const property : Property | undefined = allProperties.find(property => Number(property.id) === Number(id));

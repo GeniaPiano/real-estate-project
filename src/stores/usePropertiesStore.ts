@@ -1,39 +1,49 @@
 import { create } from 'zustand'
 import { propertiesService } from '../services/PropertiesServices'
+import {PropertiesState} from "./types.ts";
 
-export const usePropertiesStore = create((set) => ({
+export const usePropertiesStore  = create<PropertiesState>((set) => ({
   properties: [],
   currentProperty: null,
   isLoading: false,
   error: null,
   filters: {
     cities: [],
-    types: '',
+    types: [],
     priceRange: [0, Infinity],
   },
   filteredProperties: [],
   fetchProperties: async () => {
-    set({isLoading: true, error: null})
-    try {
-      const properties = await propertiesService.fetchAll()
-      // setTimeout to simulate fetching from API
-      setTimeout(()=> {
-        set({properties, filteredProperties: properties, isLoading: false})
-      }, 800)
-  } catch (error) {
-    return set({isLoading: false, error: error.message})
-  }
- },
- fetchPropertyById: async (id) => {
+      set({isLoading: true, error: null})
+      try {
+          const properties = await propertiesService.fetchAll()
+          // setTimeout to simulate fetching from API
+          setTimeout(() => {
+              set({properties, filteredProperties: properties, isLoading: false})
+          }, 800)
+      } catch (error) {
+          if (error instanceof Error) {
+              set({isLoading: false, error: error.message});
+          } else {
+              set({isLoading: false, error: 'An unknown error occurred'});
+          }
+      }
+  },
+
+    fetchPropertyById: async (id:string) => {
   set({ isLoading: true, error: null})
   try {
     const property = await propertiesService.fetchById(id)
     setTimeout(()=> {
-      // setTimeout to simulate fetching from API  
+      // setTimeout to simulate fetching from API
       set({currentProperty: property, isLoading: false})
     }, 800)
   } catch (error) {
-    set({ isLoading: false, error: error.message })
+      if (error instanceof Error) {
+          set({isLoading: false, error: error.message});
+      } else {
+          set({isLoading: false, error: 'An unknown error occurred'});
+      }
   }
  },
  resetFilters: () => {

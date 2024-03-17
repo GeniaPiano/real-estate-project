@@ -1,12 +1,12 @@
-import { Select, MenuItem, FormControl, Box } from "@mui/material";
+import {Select, MenuItem, FormControl, Box, SelectChangeEvent} from "@mui/material";
 import { useCountries } from "../../../hooks/useCountries/useCountries";
 import { useState } from "react";
-import { Country } from "./types";
+import {CountryName} from "./types.ts";
 
 export const CountriesDropdown = () => {
-  const [selectedCountry, setSelectedCountry] = useState<Country | "">("");
-  const dataCountries = useCountries();
-  const handleChange = (event) => {
+  const [selectedCountry, setSelectedCountry] = useState<CountryName>("");
+  const {countries, loading, error} = useCountries();
+  const handleChange = (event: SelectChangeEvent<string>) => {
     setSelectedCountry(event.target.value);
   };
 
@@ -25,8 +25,8 @@ export const CountriesDropdown = () => {
           onChange={handleChange}
           defaultValue="select country"
         >
-          {dataCountries &&
-            dataCountries.map((el, index) => (
+          {!loading && !error && countries &&
+            countries.map((el, index) => (
               <MenuItem
                 sx={{
                   backgroundColor: "#fff",
