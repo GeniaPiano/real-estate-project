@@ -3,6 +3,10 @@
 Aplikacja została napisana na potrzeby zadania rekrutacyjnego na stanowisko Frontend Develope.
 Służy do przeglądania ogłoszeń nieruchomości z możliwością filtrowania wyników i wyświetlania szczegółów ogłoszenia.
 
+## Live view
+
+https://real-estate-project-nu-tan.vercel.app/
+
 ## Funkcjonalności
 
 - Wyświetlanie listy ogłoszeń nieruchomości z pliku JSON.
