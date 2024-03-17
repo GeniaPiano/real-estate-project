@@ -1,7 +1,6 @@
 export const style = {
-    wrapper : {
-        flex: "1 2",
-        display: "flex",
-        flexDirection: "row"
+    select: {
+        backgroundColor: "#fff",
+        width: "300px"
     }
 }
