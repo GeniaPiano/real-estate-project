@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import { useState } from "react";
 import {
   Box,
@@ -15,21 +14,8 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import { CountriesDropdown } from "../../atoms/CountriesDropdown/CountriesDropdown";
-
-const style = {
-  link: {
-    color: "inherit",
-    cursor: "pointer",
-    textDecoration: "none",
-  },
-  appBarLogo: {
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    cursor: "pointer",
-    marginRight: "40px",
-  },
-};
+import { CountriesDropdown} from "../../atoms/CountriesDropdown/CountriesDropdown.tsx";
+import {style} from "./style.ts";
 
 const pathsData = [
   {
@@ -45,49 +31,23 @@ const pathsData = [
   { name: "Post ad", path: "/post-ad", icon: <PostAddIcon /> },
 ];
 
-const AppBarWrapper = styled(Box)(({ theme }) => ({
-  maxHeight: "100%",
-  height: 80,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  width: "100%",
-  borderBottom: "1px solid",
-  marginBottom: "10px",
-  [theme.breakpoints.down("sm")]: {
-    flexDirection: "column",
-    alignContent: "flex-start",
-    justifyContent: "flex-start",
-    marginBottom: "10px",
-  },
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-}));
-
 export const AppBar = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const navigate = useNavigate();
-
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
   };
-
-  const handleBoxClick = (path) => {
+  const handleBoxClick = (path: string) => {
     if (drawerOpen) setDrawerOpen(false);
     navigate(path);
   };
 
+  // @ts-ignore
   return (
     <>
-      <AppBarWrapper>
+      <Box sx={style.appBarWrapper}>
         <Box
-          sx={{
-            flex: "1 2",
-            display: "flex",
-            flexDirection: "row",
-          }}
+          sx={style.wrapper}
         >
           <Typography
             variant="h6"
@@ -109,7 +69,7 @@ export const AppBar = () => {
 
         {/* Menu items */}
         <Hidden smDown>
-          <Grid container spacing={2} sx={{ flex: "1" }}>
+          <Grid container spacing={2} sx={style.container}>
             {pathsData.map((el) => (
               <Grid key={el.name} item xs={12} sm={4} md={4} lg={4}>
                 <Link to={el.path} style={style.link}>
@@ -124,20 +84,21 @@ export const AppBar = () => {
             ))}
           </Grid>
         </Hidden>
-      </AppBarWrapper>
+      </Box>
 
       {/* Drawer for smaller screens */}
       <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={toggleDrawer}
-        width="250px"
+        sx={{width: "250px"}}
       >
         <Stack spacing={2} p={2}>
           {pathsData.map((el) => (
             <Box
               key={el.name}
               to={el.path}
+              component={Link}
               style={style.link}
               onClick={() => handleBoxClick(el.path)}
             >
