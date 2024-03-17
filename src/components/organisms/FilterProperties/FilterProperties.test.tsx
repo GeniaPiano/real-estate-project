@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { describe, it, expect, vi} from 'vitest';
-import { render, screen} from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import {FilterProperties} from "./FilterProperties.tsx";
 import {usePropertiesStore} from "../../../stores/usePropertiesStore.ts";
 vi.mock('../../../stores/usePropertiesStore', () => ({
@@ -11,7 +11,6 @@ const mockSetFilter = vi.fn();
 const mockResetFilters = vi.fn();
 describe('Filter Properties component', () => {
     beforeEach(() => {
-
     // @ts-ignore
         usePropertiesStore.mockImplementation(() => ({
             properties: [
@@ -28,7 +27,14 @@ describe('Filter Properties component', () => {
 
     it('renders the search input', () => {
         render(<FilterProperties />);
-        expect(screen.getByText('Filter and sort')).toBeInTheDocument();
+        expect(screen.getByText('Filter properties')).toBeInTheDocument();
     });
 
+    it('renders filter section', () => {
+        render(<FilterProperties />);
+        const button = screen.getByText('Filter properties')
+        fireEvent.click(button)
+        expect(screen.getByText('Price range')).toBeInTheDocument()
+        expect(screen.getByText('Select property type')).toBeInTheDocument()
+    });
 });
