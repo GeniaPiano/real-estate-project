@@ -2,8 +2,8 @@ import { PropertiesList } from "../../components/organisms/PropertiesList/Proper
 import { FilterProperties } from "../../components/organisms/FilterProperties/FilterProperties.tsx";
 
 export const HomePage = () => (
-  <>
+  <div data-testid='home-page'>
     <FilterProperties />
     <PropertiesList />
-  </>
+  </div>
 );

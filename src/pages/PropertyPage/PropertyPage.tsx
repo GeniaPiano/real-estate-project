@@ -118,7 +118,7 @@ export const PropertyPage = () => {
         return <NotFoundProperties message="Property not found."/>;
 
     return (
-        <Box sx={{width: "100%", overflow: "hidden"}}>
+        <Box data-testid='property-page' sx={{width: "100%", overflow: "hidden"}}>
             {/* <Button variant="contained"> Back </Button> */}
             <TitleHeader title="Property Details" backToHomePage={true}/>
 
