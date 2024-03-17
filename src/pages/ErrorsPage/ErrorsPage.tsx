@@ -1,3 +1,5 @@
+import {errorPageMessage} from "./messages.ts";
+
 export const ErrorsPage = () => {
-  return <div>Error Page</div>
+  return <div>{errorPageMessage.title}</div>
 }

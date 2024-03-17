@@ -16,19 +16,23 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { CountriesDropdown} from "../../atoms/CountriesDropdown/CountriesDropdown.tsx";
 import {style} from "./style.ts";
+import {appBarMessages} from "./messages.ts";
 
 const pathsData = [
   {
-    name: "Home",
+    name: appBarMessages.pathNames.home,
     path: "/",
     icon: <HomeIcon />,
   },
   {
-    name: "Account",
+    name: appBarMessages.pathNames.account,
     path: "/account",
     icon: <AccountCircleIcon />,
   },
-  { name: "Post ad", path: "/post-ad", icon: <PostAddIcon /> },
+  {
+    name: appBarMessages.pathNames.postAd,
+    path: "/post-ad",
+    icon: <PostAddIcon /> },
 ];
 
 export const AppBar = () => {
@@ -54,7 +58,7 @@ export const AppBar = () => {
             style={style.appBarLogo}
             onClick={() => handleBoxClick("/")}
           >
-            Real estate
+            {appBarMessages.logoTitle}
           </Typography>
           <CountriesDropdown />
           {/* Hamburger menu */}
