@@ -5,7 +5,17 @@ export const style = {
         color: "inherit",
         cursor: "pointer",
         textDecoration: "none",
+        '&:hover': {
+            backgroundColor: theme.palette.grey[200]
+        }
     },
+    activeLink: {
+        color: theme.palette.primary.main,
+        fontWeight: "bold",
+        cursor: "pointer",
+        textDecoration: 'underline',
+        backgroundColor: "red"
+       },
     appBarLogo: {
         whiteSpace: "nowrap",
         overflow: "hidden",

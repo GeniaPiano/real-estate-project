@@ -33,6 +33,7 @@ export const Pagination: FC<PaginationProps> = ({ total, perPage, currentPage, o
           key={index}
           onClick={() => onPageChange(index + 1)}
           disabled={currentPage === index + 1}
+          data-testid={`button_${index}`}
         >
           {index + 1}
         </Button>
@@ -40,8 +41,8 @@ export const Pagination: FC<PaginationProps> = ({ total, perPage, currentPage, o
       <IconButtonWithTooltip
         icon={<ArrowRightIcon />}
         handleClick={handleNextPage}
-        title="Previous page"
-        ariaLabel="Previous page"
+        title="Next page"
+        ariaLabel="Next page"
         disabled={currentPage === pageCount}
       />
     </Box>

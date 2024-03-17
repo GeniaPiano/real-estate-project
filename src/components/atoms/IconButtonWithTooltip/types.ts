@@ -9,4 +9,4 @@ export interface IconButtonWithTooltipProps {
     handleClick: () => void;
     color?: IconButtonProps['color'];
     disabled?: boolean;
-}
+ }

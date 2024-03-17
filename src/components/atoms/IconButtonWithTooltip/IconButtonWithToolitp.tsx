@@ -16,6 +16,7 @@ export const IconButtonWithTooltip: FC<IconButtonWithTooltipProps> = ({
       onClick={handleClick}
       color={color || "default"}
       disabled={disabled}
+      data-testid={ariaLabel}
     >
       {icon}
     </IconButton>

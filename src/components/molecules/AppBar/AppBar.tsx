@@ -8,15 +8,15 @@ import {
   Hidden,
   Typography,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { CountriesDropdown} from "../../atoms/CountriesDropdown/CountriesDropdown.tsx";
-import {style} from "./style.ts";
-import {appBarMessages} from "./messages.ts";
+import { style } from "./style.ts";
+import { appBarMessages } from "./messages.ts";
 
 const pathsData = [
   {
@@ -75,15 +75,15 @@ export const AppBar = () => {
         <Hidden smDown>
           <Grid container spacing={2} sx={style.container}>
             {pathsData.map((el) => (
-              <Grid key={el.name} item xs={12} sm={4} md={4} lg={4}>
-                <Link to={el.path} style={style.link}>
+              <Grid key={el.name} item xs={12} sm={4} md={4} lg={4} >
+                <NavLink to={el.path} style={({ isActive }) => (isActive ? style.activeLink : style.link)}>
                   <Stack direction="row" spacing={1}>
                     {el.icon}
                     <Hidden mdDown>
                       <Box>{el.name}</Box>
                     </Hidden>
                   </Stack>
-                </Link>
+                </NavLink>
               </Grid>
             ))}
           </Grid>
