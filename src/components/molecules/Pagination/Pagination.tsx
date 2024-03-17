@@ -2,8 +2,10 @@ import { Box, Button } from "@mui/material";
 import { IconButtonWithTooltip } from "../../atoms/IconButtonWithTooltip/IconButtonWithToolitp";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import {PaginationProps} from "./types.ts";
+import {FC} from "react";
 
-export const Pagination = ({ total, perPage, currentPage, onPageChange }) => {
+export const Pagination: FC<PaginationProps> = ({ total, perPage, currentPage, onPageChange }) => {
   const pageCount = Math.ceil(total / perPage);
   const handlePreviousPage = () => {
     if (currentPage > 1) {
