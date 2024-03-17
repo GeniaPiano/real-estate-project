@@ -1,11 +1,13 @@
-import { IconButton, Tooltip } from "@mui/material";
+import {FC} from "react";
+import { IconButton, Tooltip } from '@mui/material';
+import {IconButtonWithTooltipProps} from "./types.ts";
 
-export const IconButtonWithTooltip = ({
+export const IconButtonWithTooltip: FC<IconButtonWithTooltipProps> = ({
   icon,
   title,
   ariaLabel,
   handleClick,
-  color,
+  color = 'default',
   disabled = false,
 }) => {
   const button = (
@@ -14,7 +16,6 @@ export const IconButtonWithTooltip = ({
       onClick={handleClick}
       color={color || "default"}
       disabled={disabled}
-      variant="contained"
     >
       {icon}
     </IconButton>
@@ -27,11 +28,3 @@ export const IconButtonWithTooltip = ({
   );
 };
 
-// IconButtonWithTooltip.propTypes = {
-//   icon: PropTypes.element.isRequired,
-//   title: PropTypes.string.isRequired,
-//   ariaLabel: PropTypes.string,
-//   handleClick: PropTypes.func,
-//   color: PropTypes.string,
-//   disabled: PropTypes.bool,
-// };

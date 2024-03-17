@@ -1,12 +1,12 @@
-import React from "react"
 import { Box, Typography } from "@mui/material"
-import { useTheme,  alpha } from "@mui/material/styles"
+import {Message} from "./types.ts";
+import {style} from "./style.ts";
 
-export const NotFoundProperties = ({message}) => {
-  const theme = useTheme()
+
+export const NotFoundProperties = ({message}: Message) => {
   return (
-    <Box  sx={{background: alpha(theme.palette.secondary.main, 0.2), borderRadius: '10px', paddingY: '50px', marginTop: '20px'}}>
-      <Typography variant="h5" sx={{textAlign: 'center', color: theme.palette.secondary.greyDark}}>
+    <Box  sx={style.wrapper}>
+      <Typography variant="h5" sx={style.text}>
         {message}
       </Typography> 
      </Box>
