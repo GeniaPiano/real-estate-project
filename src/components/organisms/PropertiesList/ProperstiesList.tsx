@@ -3,7 +3,6 @@ import {useState, useEffect} from "react";
 import {
     Stack,
     Button,
-    IconButton,
     Box,
     Card,
     CardContent,
@@ -14,25 +13,19 @@ import {
     DialogContent,
     DialogTitle,
 } from "@mui/material";
-import ShareIcon from "@mui/icons-material/Share";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {LoadingSpinner} from "../../atoms/LoadingSpinner/LoadingSpinner";
-import {useImageWidth} from "../../../hooks/useImageWidth/useImageWidth";
-import {propertyStyle} from "./propertyStyle";
+import {style} from "./style.ts";
 import {usePropertiesStore} from "../../../stores/usePropertiesStore";
 import {Pagination} from "../../molecules/Pagination/Pagination";
 import {NotFoundProperties} from "../../atoms/NotFoundProperties/NotFoundProperties";
 import {IconButtonWithTooltip} from "../../atoms/IconButtonWithTooltip/IconButtonWithToolitp";
 import CloseIcon from "@mui/icons-material/Close";
-import "./PropertiesList.css";
 import {Property} from "../../../types/Property.ts";
+import {propertiesListMessages} from "./messages.ts";
 
 export const PropertiesList = () => {
-    const width = useImageWidth();
     const navigate = useNavigate();
-    const style = propertyStyle(width);
-    const {properties, fetchProperties, isLoading, filteredProperties} =
-        usePropertiesStore();
+    const {properties, fetchProperties, isLoading, filteredProperties} = usePropertiesStore();
     const PER_PAGE = 8;
     const [page, setPage] = useState(1);
     const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -57,7 +50,7 @@ export const PropertiesList = () => {
             variant="contained"
             sx={style || style.button}
         >
-            View more
+            {propertiesListMessages.viewMore}
         </Button>
     );
 
@@ -65,8 +58,7 @@ export const PropertiesList = () => {
     const handleOpenDialog = (property) => {
         setSelectedProperty(property);
         setIsOpenDialog(true);
-        console.log(selectedProperty);
-    };
+      };
 
     const handleCloseDialog = () => {
         setIsOpenDialog(false);
@@ -97,7 +89,8 @@ export const PropertiesList = () => {
                 {properties &&
                     paginatedProperties.map((el) => (
                         <Grid item key={el.id} xs={12} sm={6} md={6} lg={3}>
-                            <Card sx={{height: "100%"}}>
+                            <Card sx={style.card}
+                                  onClick={() => handleOpenDialog(el)}>
                                 <CardContent>
                                     <Typography sx={style.title}> {el.name} </Typography>
                                     <Box sx={style.imageIconsWrapper}>
@@ -107,26 +100,16 @@ export const PropertiesList = () => {
                                                 image={el.images[0]}
                                                 alt={el.name}
                                                 sx={style.image}
-                                                onClick={() => handleOpenDialog(el)}
                                             />
                                         </Box>
-                                        <Stack>
-                                            <IconButton aria-label="add to favorites">
-                                                <FavoriteIcon color="primary" aria-label="heart"/>
-                                            </IconButton>
-                                            <IconButton color="primary" aria-label="share">
-                                                <ShareIcon/>
-                                            </IconButton>
-                                        </Stack>
                                     </Box>
-                                    <Typography className="description" variant="body2">
+                                    <Typography sx={style.description} variant="body2">
                                         {el.description}
                                     </Typography>
                                     <Stack direction="row" spacing={2} alignItems="center">
                                         <Typography sx={style.city}> {el.city} </Typography>
                                         <Typography sx={style.price}>
-                                            {" "}
-                                            {`${el.price}  PLN`}{" "}
+                                                                                       {`${el.price}  PLN`}{" "}
                                         </Typography>
                                     </Stack>
                                     <Box sx={style.buttonWrapper}>
@@ -146,7 +129,7 @@ export const PropertiesList = () => {
                         handleClick={handleCloseDialog}
                     />
                 </Box>
-                <DialogTitle sx={{textAlign: "center"}}>
+                <DialogTitle sx={style.dialogTitle}>
                     {selectedProperty?.name}
                     {renderButton(selectedProperty?.id, style.buttonDialog)}
                 </DialogTitle>

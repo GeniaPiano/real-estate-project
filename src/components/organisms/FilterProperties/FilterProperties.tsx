@@ -129,8 +129,8 @@ export  const FilterProperties = () => {
                 ))}            
               </Grid>  
             </Box>
-          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {FilterPropertiesMessages.select} </Button>
-          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {FilterPropertiesMessages.close} </Button>
+          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {FilterPropertiesMessages.close} </Button>
+          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {FilterPropertiesMessages.resetChoice} </Button>
         </AccordionDetails>
       </Accordion>       
         { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) && !expanded && 

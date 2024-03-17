@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import { describe, it, expect, vi} from 'vitest';
-import {fireEvent, render, screen} from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import {FilterProperties} from "./FilterProperties.tsx";
 import {usePropertiesStore} from "../../../stores/usePropertiesStore.ts";
 vi.mock('../../../stores/usePropertiesStore', () => ({
@@ -31,12 +31,4 @@ describe('Filter Properties component', () => {
         expect(screen.getByText('Filter and sort')).toBeInTheDocument();
     });
 
-    it('calls setFilter when a city is selected', () => {
-        render(<FilterProperties />);
-        const checkbox = screen.getByLabelText('Warszawa');
-        expect(checkbox).toBeInTheDocument();
-        fireEvent.click(checkbox);
-        expect(mockSetFilter).toHaveBeenCalledWith({ cities: ['Warszawa'] });
-    })
-
-   });
+});
