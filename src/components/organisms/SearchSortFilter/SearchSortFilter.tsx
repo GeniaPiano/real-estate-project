@@ -1,33 +1,39 @@
-import React from "react"
-import { useState } from 'react'
-import { Grid, Typography, Box, Button, Checkbox, FormControlLabel, FormGroup, Accordion, AccordionSummary, AccordionDetails, Slider } from '@mui/material'
+import {ChangeEvent, SyntheticEvent, useState} from "react"
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Slider,
+  Typography
+} from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import TuneIcon from '@mui/icons-material/Tune'
-import { usePropertiesStore } from '../../../stores/usePropertiesStore'
-import { useTheme, alpha } from '@mui/material/styles'
+import {usePropertiesStore} from '../../../stores/usePropertiesStore'
+import {style} from "./style.ts";
+import {searchSortFilterMessages} from "./messages.ts";
 
 export  const SearchSortFilter = () => {
-  const [selectedCities, setSelectedCities] = useState([])
-  const [priceRange, setPriceRange] = useState([0, 1000000])
-  const [selectedTypes, setSelectedTypes] = useState([])
-  const [expanded, setExpanded] = useState(false)
+  const [selectedCities, setSelectedCities] = useState<string[]>([])
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000])
+  const [selectedTypes, setSelectedTypes] = useState<string[] >([])
+  const [expanded, setExpanded] = useState<string | boolean>(false)
   const { properties, setFilter, resetFilters } = usePropertiesStore()
-  const theme = useTheme()
   const uniquePropertyCities = properties ? [...new Set(properties.map((property) => property.city))] : []
   const uniquePropertyTypes = properties ? [...new Set(properties.map((property) => property.type))] : []
-
-  const handleSelectCities = (event) => {
+  const handleSelectCities = (event: ChangeEvent<HTMLInputElement>) => {
     const city = event.target.name;
     setSelectedCities((prevSelectedCities) => {
-      const newSelectedCities = event.target.checked
-        ? [...prevSelectedCities, city]
-        : prevSelectedCities.filter((c) => c !== city)
-      setFilter({ cities: newSelectedCities })
-      return newSelectedCities
-    })
+      return event.target.checked
+          ? [...prevSelectedCities, city]
+          : prevSelectedCities.filter((c) => c !== city);
+    });
   }
-
-  const handleSelectTypes = (event) => {
+  const handleSelectTypes = (event: ChangeEvent<HTMLInputElement>) => {
     const type = event.target.name;
     setSelectedTypes((prevSelectedTypes) => {
       const newSelectedTypes = event.target.checked
@@ -37,12 +43,17 @@ export  const SearchSortFilter = () => {
       return newSelectedTypes
     })
   }
+  const handlePriceChange = (
+      _event: Event,
+      value: number | number[],
+       ) => {
+    if (Array.isArray(value)) {
+      setPriceRange(value as [number, number]);
+      setFilter({ priceRange: value as [number, number] });
+    }
+  };
 
-  const handlePriceChange = (event, newValue) => {
-    setPriceRange(newValue)
-    setFilter({ priceRange: newValue })
-  }
-  const handleChange = (panel) => (event, isExpanded) => {
+  const handleChange = (panel: string) => (_event: SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false)  }
 
   const applyFilters = () => {
@@ -56,22 +67,22 @@ export  const SearchSortFilter = () => {
     setPriceRange([0, 1000000])
   }     
   return (
-    <Box direction="column" spacing={2} marginBottom={2}>
+    <Box sx={style.wrapper}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary
-            sx={{background: alpha(theme.palette.primary.main, 0.1) }} 
+            sx={style.accordionWrap}
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
           >
-            <TuneIcon sx={{paddingRight: '25px'}}/>
-            <Box> Filter and sort </Box>
+            <TuneIcon sx={style.icon}/>
+            <Box> {searchSortFilterMessages.headerTitle} </Box>
         </AccordionSummary>
         <AccordionDetails>  
         <Box>
-          <Typography  sx={{marginTop: '15px', background: theme.palette.secondary.greyLight}} variant="h6"> Price range </Typography>
+          <Typography  sx={style.sectionHeader} variant="h6"> {searchSortFilterMessages.priceRange} </Typography>
           <Slider
-              sx={{marginTop: '30px'}}
+              sx={style.slider}
               size="small"
               value={priceRange}
               onChange={handlePriceChange}
@@ -82,7 +93,7 @@ export  const SearchSortFilter = () => {
           </Box>
 
           <Box>
-            <Typography  sx={{marginTop: '15px', background: theme.palette.secondary.greyLight}} variant="h6"> Select property type </Typography>  
+            <Typography  sx={style.sectionHeader} variant="h6"> {searchSortFilterMessages.selectPropertyType}</Typography>
             <Grid container >           
               {uniquePropertyTypes.map((type) => (
                 <Grid item key={type} >
@@ -101,7 +112,7 @@ export  const SearchSortFilter = () => {
            </Grid>  
           </Box>
           <Box>
-            <Typography  sx={{marginTop: '15px', background: theme.palette.secondary.greyLight}} variant="h6" > Select cities </Typography>  
+            <Typography  sx={style.sectionHeader} variant="h6" > {searchSortFilterMessages.selectCities} </Typography>
               <Grid container>
                  {uniquePropertyCities.map((city) => (
                   <Grid item key={city} >
@@ -118,12 +129,12 @@ export  const SearchSortFilter = () => {
                 ))}            
               </Grid>  
             </Box>
-          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> Close </Button>
-          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> Reset </Button>
+          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {searchSortFilterMessages.select} </Button>
+          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {searchSortFilterMessages.close} </Button>
         </AccordionDetails>
       </Accordion>       
         { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) && !expanded && 
-          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> Reset choice </Button>
+          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> {searchSortFilterMessages.resetChoice} </Button>
         }
     </Box>
   )
