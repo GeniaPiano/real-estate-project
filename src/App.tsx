@@ -17,8 +17,8 @@ export const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/account" element={<AccountPage />} />
           <Route path="/post-ad" element={<PostAddPage />} />
-          <Route path="property/:id" element={<PropertyPage />} />
-          <Route exact path="*" element={<ErrorsPage />} />
+          <Route path="/property/:id" element={<PropertyPage />} />
+          <Route path="*" element={<ErrorsPage />} />
         </Routes>
       </MainLayout>
     </ThemeProvider>
