@@ -17,10 +17,9 @@ export const style = {
         backgroundColor: "red"
        },
     appBarLogo: {
-        whiteSpace: "nowrap",
         overflow: "hidden",
         cursor: "pointer",
-        marginRight: "40px",
+        marginRight: "20px",
     },
     wrapper : {
         flex: "1 2",

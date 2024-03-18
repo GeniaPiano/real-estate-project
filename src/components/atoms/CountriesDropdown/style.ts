@@ -1,6 +1,6 @@
 export const style = {
     select: {
         backgroundColor: "#fff",
-        width: "300px"
+        width: "230px"
     }
 }
