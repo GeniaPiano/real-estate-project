@@ -129,13 +129,17 @@ export  const FilterProperties = () => {
                 ))}            
               </Grid>  
             </Box>
-          <Button onClick={applyFilters} size="small" sx={{marginY: "30px", marginRight: '10px'}} variant="contained"> {FilterPropertiesMessages.close} </Button>
-          <Button onClick={resetFiltersAndCheckbox} color="secondary" size="small" sx={{marginY: "30px"}} variant="contained"> {FilterPropertiesMessages.resetChoice} </Button>
+          <Button onClick={applyFilters} size="small" variant="contained"> {FilterPropertiesMessages.close} </Button>
+          { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) &&
+              <Button onClick={resetFiltersAndCheckbox} size="small" sx={{ marginLeft: '10px'}} color='secondary' variant="contained">
+                {FilterPropertiesMessages.resetChoice}
+              </Button>  }
         </AccordionDetails>
       </Accordion>       
         { (selectedCities.length > 0 || selectedTypes.length > 0 || priceRange[0] !== 0 || priceRange[1] !== 1000000) && !expanded && 
-          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained"> {FilterPropertiesMessages.resetChoice} </Button>
-        }
+          <Button onClick={resetFiltersAndCheckbox} sx={{marginTop: "20px"}} color='secondary' variant="contained">
+            {FilterPropertiesMessages.resetChoice}
+          </Button>  }
     </Box>
   )
 }
