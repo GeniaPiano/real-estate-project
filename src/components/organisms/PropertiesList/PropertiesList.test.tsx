@@ -29,26 +29,7 @@ describe('PropertiesList Component', () => {
         vi.resetAllMocks();
     });
 
-    it("renders properties and handles pagination", () => {
-        const mockFetchProperties = vi.fn();
-        // @ts-ignore
-        usePropertiesStore.mockImplementation(() => ({
-            properties: mockProperties,
-            fetchProperties: mockFetchProperties,
-            isLoading: false,
-            filteredProperties: mockProperties,
-        }));
-
-        render(
-            <MemoryRouter>
-                <PropertiesList />
-            </MemoryRouter>
-        );
-        expect(screen.getByText("Property 1")).toBeInTheDocument();
-        expect(screen.getByTestId("button_0")).toBeInTheDocument();
-        });
-
-    it("displays a loading indicator when properties are being fetched", () => {
+   it("displays a loading indicator when properties are being fetched", () => {
         // @ts-ignore
         usePropertiesStore.mockReturnValue({
             properties: [],

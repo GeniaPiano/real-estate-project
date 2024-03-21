@@ -23,14 +23,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import {Property} from "../../../types/Property.ts";
 import {propertiesListMessages} from "./messages.ts";
 
+
 export const PropertiesList = () => {
     const navigate = useNavigate();
-    const {properties, fetchProperties, isLoading, filteredProperties} = usePropertiesStore();
+    const {properties, fetchProperties, isLoading, filteredProperties, currentPage, setCurrentPage} = usePropertiesStore();
     const PER_PAGE = 8;
-    const [page, setPage] = useState(1);
+    // const [page, setPage] = useState(1);
     const [isOpenDialog, setIsOpenDialog] = useState(false);
     const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
-    const startIndex = (page - 1) * PER_PAGE;
+    const startIndex = (currentPage - 1) * PER_PAGE;
     const paginatedProperties = filteredProperties
         ? filteredProperties.slice(startIndex, startIndex + PER_PAGE)
         : [];
@@ -82,8 +83,8 @@ export const PropertiesList = () => {
             <Pagination
                 total={filteredProperties ? filteredProperties.length : 0}
                 perPage={PER_PAGE}
-                currentPage={page}
-                onPageChange={setPage}
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
             />
             <Grid container spacing={2} marginTop={1}>
                 {properties &&

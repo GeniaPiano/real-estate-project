@@ -22,17 +22,20 @@ export  const FilterProperties = () => {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000000])
   const [selectedTypes, setSelectedTypes] = useState<string[] >([])
   const [expanded, setExpanded] = useState<string | boolean>(false)
-  const { properties, setFilter, resetFilters } = usePropertiesStore()
+  const { properties, setFilter, resetFilters, setCurrentPage } = usePropertiesStore()
   const uniquePropertyCities = properties ? [...new Set(properties.map((property) => property.city))] : []
   const uniquePropertyTypes = properties ? [...new Set(properties.map((property) => property.type))] : []
   const handleSelectCities = (event: ChangeEvent<HTMLInputElement>) => {
     const city = event.target.name;
     setSelectedCities((prevSelectedCities) => {
-      return event.target.checked
+      const newSelectedCities = event.target.checked
           ? [...prevSelectedCities, city]
           : prevSelectedCities.filter((c) => c !== city);
+
+      setFilter({ cities: newSelectedCities });
+      return newSelectedCities;
     });
-  }
+  };
   const handleSelectTypes = (event: ChangeEvent<HTMLInputElement>) => {
     const type = event.target.name;
     setSelectedTypes((prevSelectedTypes) => {
@@ -43,6 +46,8 @@ export  const FilterProperties = () => {
       return newSelectedTypes
     })
   }
+
+
   const handlePriceChange = (
       _event: Event,
       value: number | number[],
@@ -58,7 +63,10 @@ export  const FilterProperties = () => {
 
   const applyFilters = () => {
     setFilter({ cities: selectedCities })
-    setExpanded(false)  }
+    setExpanded(false)
+    setCurrentPage(1)
+  }
+
 
   const resetFiltersAndCheckbox = () => {
     resetFilters()

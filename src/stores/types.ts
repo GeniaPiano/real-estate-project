@@ -10,6 +10,8 @@ export interface Filters {
 export interface PropertiesState {
     properties: Property[];
     currentProperty: Property | null;
+    currentPage: number;
+    setCurrentPage: (page: number) => void;
     isLoading: boolean;
     error: string | null;
     filters: Filters;

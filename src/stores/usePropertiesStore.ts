@@ -5,6 +5,7 @@ import {PropertiesState} from "./types.ts";
 export const usePropertiesStore  = create<PropertiesState>((set) => ({
   properties: [],
   currentProperty: null,
+  currentPage: 1,
   isLoading: false,
   error: null,
   filters: {
@@ -13,6 +14,7 @@ export const usePropertiesStore  = create<PropertiesState>((set) => ({
     priceRange: [0, Infinity],
   },
   filteredProperties: [],
+  setCurrentPage: (page: number) => set({ currentPage: page }),
   fetchProperties: async () => {
       set({isLoading: true, error: null})
       try {
@@ -30,7 +32,7 @@ export const usePropertiesStore  = create<PropertiesState>((set) => ({
       }
   },
 
-    fetchPropertyById: async (id:string) => {
+  fetchPropertyById: async (id:string) => {
   set({ isLoading: true, error: null})
   try {
     const property = await propertiesService.fetchById(id)
@@ -67,7 +69,7 @@ export const usePropertiesStore  = create<PropertiesState>((set) => ({
         property.price <= newFilters.priceRange[1]
       )
     })
-    return { ...state, filters: newFilters, filteredProperties }
+    return { ...state, filters: newFilters, filteredProperties, currentPage: 1 }
   });
 },
 }))
