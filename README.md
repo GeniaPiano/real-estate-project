@@ -7,6 +7,16 @@ Służy do przeglądania ogłoszeń nieruchomości z możliwością filtrowania 
 
 https://real-estate-project-nu-tan.vercel.app/
 
+## Technologie
+
+- React.js
+- Typescript
+- React Router
+- Axios (do wykonywania zapytań HTTP)
+- Material-UI (do stylizacji komponentów)
+- Vitest (do testów jednostkowych)
+- Zustand - do zarządzania stanem globalnym aplikacji
+
 ### Tresc zadania
 
 Twoim zadaniem jest stworzenie interfejsu użytkownika dla portalu z ogłoszeniami nieruchomości. Interfejs powinien umożliwiać przeglądanie listy ogłoszeń na podstawie danych z pliku JSON oraz wyświetlanie szczegółów ogłoszenia po kliknięciu na nie. Dodatkowo, skorzystaj z API do pobrania listy krajów i wyświetlenia ich na stronie w formie listy dropdown.
@@ -24,16 +34,6 @@ Twoim zadaniem jest stworzenie interfejsu użytkownika dla portalu z ogłoszenia
 - Responsywność interfejsu.
 - Użycie biblioteki do zarządzania trasami (np. React Router).
 - Testy jednostkowe dla komponentów React.
-
-## Technologie
-
-- React.js
-- Typescript
-- React Router
-- Axios (do wykonywania zapytań HTTP)
-- Material-UI (do stylizacji komponentów)
-- Vitest (do testów jednostkowych)
-- Zustand - do zarządzania stanem globalnym aplikacji
 
 ## Instalacja
 
