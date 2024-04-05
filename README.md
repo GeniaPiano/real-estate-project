@@ -1,21 +1,28 @@
 # Real estate 
 
-Aplikacja została napisana na potrzeby zadania rekrutacyjnego na stanowisko Frontend Develope.
+Aplikacja została napisana na potrzeby zadania rekrutacyjnego na stanowisko Frontend Developer.
 Służy do przeglądania ogłoszeń nieruchomości z możliwością filtrowania wyników i wyświetlania szczegółów ogłoszenia.
 
-## Live view
+### Live view
 
 https://real-estate-project-nu-tan.vercel.app/
 
-## Funkcjonalności
+### Tresc zadania
 
-- Wyświetlanie listy ogłoszeń nieruchomości z pliku JSON.
-- Prezentacja tytułu, ceny i miniatury zdjęcia dla każdego ogłoszenia.
-- Możliwość wyświetlenia szczegółów ogłoszenia po kliknięciu na nie.
-- Pobieranie i wyświetlanie listy krajów z zewnętrznego API.
-- Filtrowanie wyników na podstawie wybranych kryteriów.
-- Responsywny interfejs użytkownika dostosowany do różnych rozdzielczości ekranu.
-- Nawigacja w aplikacji z wykorzystaniem React Router.
+Twoim zadaniem jest stworzenie interfejsu użytkownika dla portalu z ogłoszeniami nieruchomości. Interfejs powinien umożliwiać przeglądanie listy ogłoszeń na podstawie danych z pliku JSON oraz wyświetlanie szczegółów ogłoszenia po kliknięciu na nie. Dodatkowo, skorzystaj z API do pobrania listy krajów i wyświetlenia ich na stronie w formie listy dropdown.
+
+#### Wymagania:
+- Użyj frameworka React.js do stworzenia interfejsu użytkownika.
+- Stwórz plik JSON zawierający listę ogłoszeń. Każde ogłoszenie powinno mieć przynajmniej tytuł, opis, cenę i zdjęcie (link do obrazu).
+- Wyświetl listę ogłoszeń na stronie głównej aplikacji. Dla każdego ogłoszenia wyświetl jego tytuł, cenę i miniaturę zdjęcia.
+- Po kliknięciu w ogłoszenie, wyświetl szczegóły tego ogłoszenia. Powinny zawierać pełny opis, cenę i większe zdjęcie.
+- Pobierz listę krajów z API (endpoint: https://restcountries.com/v3.1/all) i wyświetl je na stronie w formie listy dropdown.
+- Stylizuj interfejs używając dowolnych technik.
+
+#### Dodatkowo możesz zwrócić uwagę na:
+- Dodanie filtrowania wyników
+- Responsywność interfejsu.
+- Użycie biblioteki do zarządzania trasami (np. React Router).
 - Testy jednostkowe dla komponentów React.
 
 ## Technologie
@@ -36,9 +43,24 @@ Aby uruchomić projekt lokalnie, wykonaj poniższe kroki:
 
 ```bash
 git clone https://github.com/GeniaPiano/real-estate-project
+```
+```bash
 cd real-estate-project
-pnpm install / yarn add / npm install
-pnpm dev / yarn dev / npm run dev
+```
+##### pnpm
+```bash
+pnpm install
+pnpm run dev
+```
+##### npm
+```bash
+npm install
+npm run dev
+```
+##### yarn
+```bash
+yarn install
+yarn dev
 ```
 
 ## Screenshots
